@@ -19,10 +19,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/home/[torneos].js",
-    "pages/home/[perfil].js",
-    "pages/home/[marcas].js",
-    "pages/home/[artistas].js"
+    "pages/home/[tournaments].tsx",
+    "pages/home/[profile].tsx",
+    "pages/home/[brands].tsx",
+    "pages/home/[artists].tsx"
   ],
   "exclude": ["node_modules"]
 }
