@@ -19,10 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/home/[tournaments].tsx",
-    "pages/home/[profile].tsx",
-    "pages/home/[brands].tsx",
-    "pages/home/[artists].tsx"
+    "pages/home/[categories].tsx"
   ],
   "exclude": ["node_modules"]
 }
