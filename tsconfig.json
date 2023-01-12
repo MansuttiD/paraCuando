@@ -15,6 +15,14 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/home/[torneos].js",
+    "pages/home/[perfil].js",
+    "pages/home/[marcas].js",
+    "pages/home/[artistas].js"
+  ],
   "exclude": ["node_modules"]
 }
