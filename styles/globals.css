@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .h900-normal-48px {
+    @apply font-sans font-black text-5xl leading-leading-8;
+  }
+  .h500-normal-16px {
+    @apply font-sans font-medium text-base leading-leading-5;
+  }
+  .h500-normal-24px {
+    @apply font-sans font-medium text-2xl leading-leading-7;
+  }
+  .h400-normal-16px {
+    @apply font-sans font-normal text-base leading-leading-5;
+  }
+  .h600-medium-20px {
+    @apply font-sans font-semibold text-xl leading-leading-6;
+  }
+  .h400-medium-15px {
+    @apply font-sans font-normal text-sm leading-leading-4;
+  }
+  .h500-medium-14px {
+    @apply font-sans font-medium text-xs leading-leading-3;
+  }
+}
