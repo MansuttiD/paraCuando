@@ -12,20 +12,6 @@ module.exports = {
       lg: '1200px',
       xl: '1536px',
     },
-    colors: {
-      primary: {
-        blue: '#1B4DB1',
-        yellow: '#F3F243',
-        pink: '#FF64BC',
-        black: '#000000',
-        blackLight: '#1A1E2E',
-        grayDark: '#6E6A6C',
-        gray: '#A7A6A7',
-        grayLight: '#D9D9D9',
-        grayLighter: '#F8F7FA',
-      },
-      'secondary-red': '#EF3F47',
-    },
     fontFamily: {
       sans: 'Roboto',
     },
@@ -53,6 +39,24 @@ module.exports = {
     },
     dropShadow: {
       '1xl': '0px 2px 4px rgba(0,0,0,0.25)',
+    },
+    extend: {
+      colors: {
+        primary: {
+          blue: '#1B4DB1',
+          yellow: '#F3F243',
+          pink: '#FF64BC',
+          black: '#000000',
+          blackLight: '#1A1E2E',
+          grayDark: '#6E6A6C',
+          gray: '#A7A6A7',
+          grayLight: '#D9D9D9',
+          grayLighter: '#F8F7FA',
+        },
+        secondary: {
+          red: '#EF3F47',
+        },
+      },
     },
   },
   plugins: [],
