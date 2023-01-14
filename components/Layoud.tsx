@@ -1,5 +1,5 @@
-import Header from "./components/Header"
-import Navbar from "./components/Navbar"
+import Header from "./Header"
+import Navbar from "./Navbar"
 
 export default function Layoud ({ children })  {
 

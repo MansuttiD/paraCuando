@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
+import Layoud from '../components/Layoud';
 import '../styles/globals.css';
-import Layoud from './Layoud';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
