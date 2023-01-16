@@ -1,5 +1,5 @@
 import { useState } from 'react';
-export default function Header({ email }) {
+export default function Header() {
   const [logged, setLogged] = useState(false);
 
   const handleLogin = () => {
@@ -118,7 +118,9 @@ export default function Header({ email }) {
             <li>Login</li>
             <li>Sing Up</li>
           </ul>
-          <div className={`${!logged ? 'hidden' : ''}`}>{email}</div>
+          <div className={`${!logged ? 'hidden' : ''}`}>
+            daniel.mansutti@gmail.com
+          </div>
           <li className="flex" onClick={handleLogin}></li>
           <svg
             width="10"
