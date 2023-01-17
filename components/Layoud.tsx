@@ -1,11 +1,11 @@
 import Header from './Header';
 import Navbar from './Navbar';
 
-export default function Layoud({ children }) {
+export default function Layoud() {
   return (
     <>
       <Header />
-      {children}
+
       <Navbar />
     </>
   );
