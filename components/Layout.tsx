@@ -1,7 +1,11 @@
 import Header from './Header';
 import Navbar from './Navbar';
 
-export default function Layout({ children }) {
+type AppProps = {
+  children: React.ReactNode;
+};
+
+export default function Layout({ children }: AppProps) {
   return (
     <>
       <Header />
