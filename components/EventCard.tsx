@@ -1,7 +1,7 @@
 export default function EventCard() {
   return (
     <div className="w-[300px] h-[450px] m-auto rounded-lg drop-shadow-1xl bg-[#FFFFFF]">
-      <div className="w-full bg-[url('/image/tienda.png')] rounded-t-lg h-1/2 ">
+      <div className="w-full bg-[url('/img/tienda.png')] rounded-t-lg h-1/2 ">
         <button className="w-[50px] h-[50px] absolute flex justify-center items-center bg-primary-grayLight rounded-full border-2 border-[#FFFFFF] top-48 right-2">
           <svg
             width="28"
