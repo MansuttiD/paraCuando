@@ -2,7 +2,11 @@ import React from 'react';
 import Footer from './Footer';
 import Header from './Header';
 
-const Layout: React.FC = ({ children }) => {
+type AppProps = {
+  children: React.ReactNode;
+};
+
+export default function Layout({ children }: AppProps) {
   return (
     <div>
       <Header />
@@ -10,6 +14,4 @@ const Layout: React.FC = ({ children }) => {
       <Footer />
     </div>
   );
-};
-
-export default Layout;
+}
