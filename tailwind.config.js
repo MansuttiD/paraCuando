@@ -13,7 +13,7 @@ module.exports = {
       xl: '1536px',
     },
     fontFamily: {
-      sans: 'Roboto',
+      sans: ['Roboto', 'san-serif'],
     },
     fontWeight: {
       black: 900,
