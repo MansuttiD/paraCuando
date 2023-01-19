@@ -1,13 +1,13 @@
-import Header from "./Header"
-import Navbar from "./Navbar"
+import Header from './Header';
 
-export default function Layoud ({ children })  {
-
-    return (
-        <>
-            <Header/>
-                { children }
-            <Navbar/>
-        </>
-    )
-  }
+type AppProps = {
+  children: React.ReactNode;
+};
+export default function Layoud({ children }: AppProps) {
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
+}
