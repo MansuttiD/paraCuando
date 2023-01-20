@@ -1,16 +1,9 @@
 import InputSearch from './InputSearch';
 
-const Footer = () => {
+export default function ComponentFooter() {
   return (
-    <div className="bg-[url('/img/bg-footer.jpg')] bg-no-repeat bg-cover h-[438px] flex items-center flex-col justify-center gap-5">
-      <img
-        src="/img/Frame-footer.png"
-        className="flex items-center justify-center"
-        alt="frame"
-      />
+    <div className="bg-[url('/img/footer.png')] h-[480px] mt-10 flex justify-center items-center">
       <InputSearch />
     </div>
   );
-};
-
-export default Footer;
+}

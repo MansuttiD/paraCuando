@@ -1,23 +1,21 @@
+import { useState } from 'react';
+import HeartDisLike from './HeartDisLike';
+import HeartLike from './HeartLike';
+
 export default function EventCard() {
+  const [likeHeart, setLikeHeart] = useState(false);
+  const changeHeart = () => {
+    setLikeHeart(!likeHeart);
+  };
+
   return (
     <div className="w-[300px] h-[450px] m-auto rounded-lg drop-shadow-1xl bg-[#FFFFFF]">
       <div className="w-full bg-[url('/img/tienda.png')] rounded-t-lg h-1/2 ">
-        <button className="w-[50px] h-[50px] absolute flex justify-center items-center bg-primary-grayLight rounded-full border-2 border-[#FFFFFF] top-48 right-2">
-          <svg
-            width="28"
-            height="24"
-            viewBox="0 0 28 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8.15 1C4.20125 1 1 4.1565 1 8.05005C1 15.1001 9.45 21.5092 14 23C18.55 21.5092 27 15.1001 27 8.05005C27 4.1565 23.7987 1 19.85 1C17.432 1 15.2935 2.18377 14 3.99563C13.3407 3.06964 12.4648 2.31393 11.4465 1.79248C10.4282 1.27103 9.29744 0.999202 8.15 1Z"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+        <button
+          onClick={changeHeart}
+          className="w-[50px] h-[50px] absolute flex justify-center items-center bg-primary-grayLight rounded-full border-2 border-[#FFFFFF] top-48 right-2"
+        >
+          {likeHeart ? <HeartLike /> : <HeartDisLike />}
         </button>
       </div>
 

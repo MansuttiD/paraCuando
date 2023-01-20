@@ -1,20 +1,24 @@
-import { Navigation, Thumbs } from 'swiper';
+import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ArrowButton from './ArrowButton';
 import EventCard from './EventCard';
-import SlideNextButton from './SlideNextButton';
-import SlidePrevButton from './SlidePrevButton';
+interface props {
+  title: string;
+  description: string;
+}
 
-export default function SliderCard() {
+export default function SliderCard({ title, description }: props) {
   const arrCard: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
-    <div className="relative">
+    <div className="relative w-4/5 p-2 m-auto mt-14">
+      <h2 className="h500-normal-24px">{title}</h2>
+      <h3 className="m-5 h400-normal-16px ">{description}</h3>
       <Swiper
-        modules={[Navigation, Thumbs]}
-        navigation
+        modules={[Navigation, Autoplay]}
+        loop={true}
         pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
         freeMode={true}
         grabCursor={true}
         onSlideChange={() => console.log('slide change')}
@@ -22,19 +26,15 @@ export default function SliderCard() {
         breakpoints={{
           0: {
             slidesPerView: 1,
-            spaceBetween: 10,
+            spaceBetween: 20,
           },
-          700: {
+          900: {
             slidesPerView: 2,
-            spaceBetween: 10,
+            spaceBetween: 20,
           },
-          1000: {
+          1200: {
             slidesPerView: 3,
-            spaceBetween: 10,
-          },
-          1300: {
-            slidesPerView: 4,
-            spaceBetween: 10,
+            spaceBetween: 20,
           },
         }}
       >
@@ -43,8 +43,7 @@ export default function SliderCard() {
             <EventCard />
           </SwiperSlide>
         ))}
-        <SlidePrevButton />
-        <SlideNextButton />
+        <ArrowButton />
       </Swiper>
     </div>
   );
