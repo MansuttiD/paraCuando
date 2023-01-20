@@ -1,4 +1,4 @@
-export default function SignUp() {
+export default function signUp() {
   return (
     <div className="flex flex-column justify-center lg:grid grid-cols-2 w-screen h-screen ">
       <section className="hidden bg-no-repeat bg-cover justify-center items-center lg:flex w-full bg-[url(../public/SignUpD.svg)] ">
