@@ -7,6 +7,7 @@ type Inputs = {
   reflink: string;
   category: string;
   type: string;
+  exampleRequired: string;
 };
 
 function PostPublication() {
@@ -238,13 +239,14 @@ function PostPublication() {
                 id="title"
                 {...register('title', { required: true })}
               />
+              {errors.exampleRequired && <span>This field is required</span>}
             </div>
             <div className="flex flex-col">
               <div className="flex flex-col gap-5 mb-6">
                 <select
                   className="h-[51px] outline-none rounded-lg border border-primary-grayDark"
                   id="type"
-                  {...register('type')}
+                  {...register('type', { required: true })}
                 >
                   <option value="Tipo1">Tipo1</option>
                   <option value="Tipo2">Tipo2</option>
@@ -277,8 +279,9 @@ function PostPublication() {
                   className="w-full"
                   type="text"
                   id="reflink"
-                  {...register('reflink')}
+                  {...register('reflink', { required: true })}
                 />
+                {errors.exampleRequired && <span>This field is required</span>}
               </div>
             </div>
             <div
