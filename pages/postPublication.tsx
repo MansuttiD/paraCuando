@@ -1,11 +1,28 @@
 import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import NextButton from '../components/NextButton';
 
+type Inputs = {
+  title: string;
+  reflink: string;
+  category: string;
+  type: string;
+};
+
 function PostPublication() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
   const [formPublication, setFormPublication] = useState(false);
+
   const handleFormPublication = () => {
     setFormPublication(!formPublication);
   };
+
   return (
     <section className="flex flex-col lg:flex-row w-screen h-screen">
       <aside className="bg-primary-blue flex flex-col justify-center items-center p-[1.5rem] lg:w-[20%] lg:justify-start">
@@ -207,29 +224,37 @@ function PostPublication() {
           </span>
         </div>
         <div className="flex flex-col gap-5  items-center">
-          <form className="w-full lg:px-[4.5rem]" action="">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="w-full lg:px-[4.5rem]"
+          >
             <div className="mb-6 border rounded-lg border-primary-gray lg:w-full">
               <label className="h-[49.6px]" htmlFor="title">
                 Titulo de la publicacion
               </label>
-              <input className="w-full" type="text" name="titulo" id="title" />
+              <input
+                className="w-full"
+                type="text"
+                id="title"
+                {...register('title', { required: true })}
+              />
             </div>
             <div className="flex flex-col">
               <div className="flex flex-col gap-5 mb-6">
                 <select
                   className="h-[51px] outline-none rounded-lg border border-primary-grayDark"
-                  name="type"
                   id="type"
+                  {...register('type')}
                 >
-                  <option value="1">Tipo1</option>
-                  <option value="2">Tipo2</option>
-                  <option value="3">Tipo3</option>
-                  <option value="4">Tipo4</option>
+                  <option value="Tipo1">Tipo1</option>
+                  <option value="Tipo2">Tipo2</option>
+                  <option value="Tipo3">Tipo3</option>
+                  <option value="Tipo4">Tipo4</option>
                 </select>
                 <select
                   className="h-[51px] outline-none rounded-lg border border-primary-grayDark"
-                  name="category"
                   id="category"
+                  {...register('category')}
                 >
                   <option value="1">Categoria1</option>
                   <option value="2">Categoria2</option>
@@ -251,8 +276,8 @@ function PostPublication() {
                 <input
                   className="w-full"
                   type="text"
-                  name="reflink"
                   id="reflink"
+                  {...register('reflink')}
                 />
               </div>
             </div>
