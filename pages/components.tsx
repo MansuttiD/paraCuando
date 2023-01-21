@@ -38,7 +38,7 @@ export default function components() {
           <li>SlidePrevButton</li>
           <SlidePrevButton /> */}
         <li>SliderCard</li>
-        <SliderCard />
+        <SliderCard title="Titulo" description="subtitulo" />
       </ul>
     </div>
   );
