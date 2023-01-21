@@ -4,7 +4,7 @@ import type { NextPageWithLayout } from './_app';
 const SignUp: NextPageWithLayout = () => {
   return (
     <div className="flex flex-column justify-center lg:grid grid-cols-2 w-screen h-screen ">
-      <section className="hidden bg-no-repeat bg-cover justify-center items-center lg:flex w-full bg-[url(../public/SignUpD.svg)] ">
+      <section className="hidden bg-no-repeat bg-cover justify-center items-center lg:flex w-full bg-[url(/SignUpD.svg)] ">
         <div className="flex translate-y-20">
           <svg
             className="translate-x-1"
