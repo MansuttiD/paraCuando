@@ -3,7 +3,7 @@ import EventCard from '../components/EventCard';
 import Label from '../components/Label';
 import NextButton from '../components/NextButton';
 
-export default function Perfil() {
+export default function Profile() {
   return (
     <div>
       <section className="h-32 bg-primary-blue "></section>
@@ -23,6 +23,8 @@ export default function Perfil() {
           </div>
         </div>
         <div className="flex flex-col gap-11 mb-14 lg:flex-row lg:flex-wrap lg:gap-6 ">
+          <EventCard />
+          <EventCard />
           <EventCard />
           <EventCard />
           <EventCard />

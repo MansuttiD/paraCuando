@@ -1,4 +1,7 @@
-export default function Login() {
+import type { ReactElement } from 'react';
+import type { NextPageWithLayout } from './_app';
+
+const Login: NextPageWithLayout = () => {
   return (
     <div className="flex flex-column justify-center lg:grid grid-cols-2 w-screen h-screen">
       <section className="hidden bg-no-repeat bg-cover justify-center items-center lg:flex w-full bg-[url(../public/LoginD.svg)]  ">
@@ -267,4 +270,10 @@ export default function Login() {
       </section>
     </div>
   );
-}
+};
+
+Login.getLayout = function getLayout(page: ReactElement) {
+  return page;
+};
+
+export default Login;

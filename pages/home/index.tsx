@@ -1,9 +1,11 @@
+import Hero from '../../components/Hero';
 import Label from '../../components/Label';
 import SliderCard from '../../components/SliderCard';
 
 const Index = () => {
   return (
     <div>
+      <Hero />
       <SliderCard
         title="Populares en Queretaro"
         description="Lo que las personas piden mas"
