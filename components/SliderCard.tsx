@@ -1,9 +1,9 @@
 import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ArrowButton from './ArrowButton';
 import EventCard from './EventCard';
+
 interface props {
   title: string;
   description: string;
