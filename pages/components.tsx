@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HeartDisLike from '../components/HeartDisLike';
 import HeartLike from '../components/HeartLike';
+import Hero from '../components/Hero';
 import InputSearch from '../components/InputSearch';
 import Label from '../components/Label';
 import NextButton from '../components/NextButton';
@@ -39,6 +40,8 @@ export default function components() {
           <SlidePrevButton /> */}
         <li>SliderCard</li>
         <SliderCard title="Titulo" description="subtitulo" />
+        <li>Hero</li>
+        <Hero />
       </ul>
     </div>
   );
