@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import InputSearch from './InputSearch';
+import Label from './Label';
 
 const Footer = () => {
   return (
@@ -11,6 +13,17 @@ const Footer = () => {
         height={200}
       />
       <InputSearch />
+      <div className="flex gap-2">
+        <Link href="/home/marcas">
+          <Label category="Marcas y tiendas" />
+        </Link>
+        <Link href="/home/artistas">
+          <Label category="Artistas y conciertos" />
+        </Link>
+        <Link href="/home/torneos">
+          <Label category="Torneos" />
+        </Link>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
 
@@ -56,9 +57,11 @@ const Login: NextPageWithLayout = () => {
             </button>
           </form>
           <p className="flex justify-center ">
-            <span className=" inline-block h-10 w-40 h400-medium-15px text-[16px] leading-[20px] lg:w-full lg:text-center ">
-              Did you forget your password?
-            </span>
+            <Link href="/singup">
+              <span className=" inline-block h-10 w-40 h400-medium-15px text-[16px] leading-[20px] lg:w-full lg:text-center ">
+                Did you forget your password?
+              </span>
+            </Link>
           </p>
         </section>
       </section>

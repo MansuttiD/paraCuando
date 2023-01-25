@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
@@ -6,11 +7,12 @@ import SliderCard from '../../components/SliderCard';
 const CategoriPage = () => {
   const router = useRouter();
   const { categories } = router.query;
-  categories;
+
   return (
     <div>
       <div
-        className={`px-[20px] py-[23px] bg-[url(/${categories}.svg)] bg-no-repeat bg-cover `}
+        style={{ backgroundImage: `url(/${categories}.svg)` }}
+        className={`px-[20px] py-[23px] h-[204px] bg-no-repeat bg-cover`}
       >
         <h4 className="text-white h500-normal-16px  mb-[23px] ">{`Home/${
           categories == 'marcas'
@@ -40,10 +42,16 @@ const CategoriPage = () => {
       </div>
       <div className="flex flex-col justify-center mt-[25px]  items-center gap-[22px] lg:gap-[166px] lg:flex-row-reverse">
         <InputSearch />
-        <div className="flex flex-wrap  gap-[2px] justify-center ">
-          <Label category="Marcas y tiendas" />
-          <Label category="Artistas y conciertos" />
-          <Label category="Torneos" />
+        <div className="flex flex-wrap gap-[2px] justify-center ">
+          <Link href="/home/marcas">
+            <Label category="Marcas y tiendas" />
+          </Link>
+          <Link href="/home/artistas">
+            <Label category="Artistas y conciertos" />
+          </Link>
+          <Link href="/home/torneos">
+            <Label category="Torneos" />
+          </Link>
         </div>
       </div>
       <div>
@@ -55,7 +63,7 @@ const CategoriPage = () => {
           title="Sugerencias para ti"
           description="Publicaciones que podrias colaborar"
         />
-        <div className=" bg-primary-grayLighter pt-[25px] px-[60px] max-w-[950px] min-h-[250px] ml-16 mt-16 flex flex-col gap-6 md:m-auto md:mt-16">
+        <div className=" bg-primary-grayLighter pt-[25px] px-[60px] max-w-[950px] min-h-[250px] mt-16 flex flex-col gap-6 md:m-auto md:mt-16 pb-10 text-primary-grayDark">
           <h2 className="mb-3 h500-normal-24px">¡Hagámoslo más personal!</h2>
           <h3 className="h400-normal-16px">
             Selecciona tus interes para brindarte sugerencia de acuerdo a tus

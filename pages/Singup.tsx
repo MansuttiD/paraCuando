@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
 
@@ -81,14 +82,17 @@ const SignUp: NextPageWithLayout = () => {
                 className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 "
               />
             </div>
+
             <button className="bg-primary-blue rounded-[5px] h-[45.26px] text-white h400-normal-16px font-semibold">
               Crear cuenta
             </button>
           </form>
           <p className="flex justify-center">
-            <span className=" text-center inline-block h-10 w-40 h400-medium-15px text-[16px] leading-[20px]  ">
-              or Log in
-            </span>
+            <Link href="/login">
+              <span className=" text-center inline-block h-10 w-40 h400-medium-15px text-[16px] leading-[20px]  ">
+                or Log in
+              </span>
+            </Link>
           </p>
         </div>
       </section>
