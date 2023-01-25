@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -42,9 +41,7 @@ export default function SliderCard({ title, description }: props) {
       >
         {arrCard.map((card) => (
           <SwiperSlide key={card}>
-            <Link href="/detailPage">
-              <EventCard />
-            </Link>
+            <EventCard />
           </SwiperSlide>
         ))}
         <ArrowButton />
