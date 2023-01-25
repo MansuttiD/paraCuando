@@ -12,7 +12,9 @@ const Footer = () => {
         width={200}
         height={200}
       />
-      <InputSearch />
+      <div className="w-[373px] lg:w-[465px]">
+        <InputSearch />
+      </div>
       <div className="flex gap-2">
         <Link href="/home/marcas">
           <Label category="Marcas y tiendas" />

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState } from 'react';
 import InputSearch from '../components/InputSearch';
 import Label from '../components/Label';
@@ -44,17 +45,19 @@ export default function DetailPage() {
             <Label category="Torneos" />
           </div>
         </div>
-        <div>
+        <div className="w-[314px] lg:w-[373px]">
           <InputSearch />
         </div>
       </div>
 
       {/* Informacion sobre el evento, Descripcion, Artista, Genero, Pagina etc */}
       <div className="flex items-center justify-center w-full m-auto">
-        <div className=" flex flex-col  gap-10 p-4 m-auto  items-center lg:grid lg:grid-rows-2 lg:grid-cols-3 lg:w-4/5 lg:h-[450px]">
-          <div className="h-full col-start-1 col-end-2 row-start-1 row-end-2 pl-9">
+        <div className=" flex flex-col  gap-10 p-4 m-auto  items-center lg:grid lg:grid-rows-2 lg:grid-cols-5 lg:w-4/5 lg:h-[450px]">
+          <div className="h-full col-start-1 col-end-3 row-start-1 row-end-2 pl-9">
             <span className="h500-normal-16px">Artista / Pop / Rock</span>
-            <h2 className=" h900-normal-48px">Concierto de Lady Gaga</h2>
+            <h2 className=" h900-normal-48px h900-normal-48px lg:w-min-[400px]">
+              Concierto de Lady Gaga
+            </h2>
             <p className="mt-7 mb-7 h400-medium-15px text-primary-grayDark drop-shadow-1xl">
               El concierto con la temática de Lady gaga en Las Vegas. El
               concierto con la temática de Lady gaga en Las Vegas.El concierto
@@ -86,12 +89,15 @@ export default function DetailPage() {
           </div>
 
           {/* <div className="bg-[url('/img/event.jpg')] w-4/5 bg-cover h-full md:row-span-2 md:col-span-2" /> */}
-          <img
-            className="w-full col-start-2 col-end-4 row-start-1 row-end-3 m-auto bg-cover lg:w-auto lg:h-full"
-            src={'/img/event.jpg'}
-          />
-
-          <button className="m-auto mb-0 lg:ml-8 bg-primary-blue w-full h-[40px] rounded-2xl h500-normal-16px text-white col-start-1 col-end-2 row-start-2 row-end-3">
+          <div className="w-full col-start-3 col-end-6 row-start-1 row-end-3 m-auto bg-cover lg:w-auto lg:h-full">
+            <Image
+              alt="destacada"
+              width={540}
+              height={381}
+              src={'/img/event.jpg'}
+            />
+          </div>
+          <button className="m-auto mb-9 lg:ml-8 bg-primary-blue w-full h-[40px] rounded-2xl h500-normal-16px text-white col-start-1 col-end-3 row-start-2 row-end-3">
             Votar
           </button>
         </div>
@@ -100,8 +106,8 @@ export default function DetailPage() {
       {/* Sugerencias de busqueda del evento */}
 
       <div>
-        <div className="max-w-[950px] min-h-[250px] ml-16 mt-16 flex flex-col gap-6 md:m-auto md:mt-16">
-          <h2 className="mb-3 h500-normal-24px">Hagamoslo mas personal</h2>
+        <div className="bg-primary-grayLighter pt-[25px] px-[60px] max-w-[950px] min-h-[250px] mt-16 flex flex-col gap-6 md:m-auto md:mt-16 pb-10 text-primary-grayDark">
+          <h2 className="mb-3 h500-normal-24px">¡Hagámoslo más personal!</h2>
           <h3 className="h400-normal-16px">
             Selecciona tus interes para brindarte sugerencia de acuerdo a tus
             gustos

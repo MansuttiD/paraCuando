@@ -1,7 +1,9 @@
 export default function InputSearch() {
   return (
-    <form>
-      <div className="flex items-center justify-around bg-white w-96 h-11 rounded-3xl text-primary-gray border-solid border-[1px] border-primary-gray">
+    <form className="w-full">
+      <div
+        className={`flex items-center justify-around bg-white w-full h-11 rounded-3xl text-primary-gray border-solid border-[1px] border-primary-gray`}
+      >
         <input
           className="w-4/5 h-full bg-white h500-medium-14px "
           placeholder="¿Que quieres ver en tu ciudad?"

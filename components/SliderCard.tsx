@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -20,6 +21,7 @@ export default function SliderCard({ title, description }: props) {
         loop={true}
         pagination={{ clickable: true }}
         freeMode={true}
+        slidesPerView={'auto'}
         grabCursor={true}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
@@ -40,7 +42,9 @@ export default function SliderCard({ title, description }: props) {
       >
         {arrCard.map((card) => (
           <SwiperSlide key={card}>
-            <EventCard />
+            <Link href="/detailPage">
+              <EventCard />
+            </Link>
           </SwiperSlide>
         ))}
         <ArrowButton />

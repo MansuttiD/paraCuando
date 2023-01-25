@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <>
       <header className="bg-[#1A1E2E] text-[11px] text-white h-[71px] flex pl-6 py-5 justify-between">
-        <Link href="/home">
+        <Link href="/">
           <svg
             width="62"
             height="30"
