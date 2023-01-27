@@ -1,6 +1,8 @@
+import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import NextButton from '../components/NextButton';
+import type { NextPageWithLayout } from './_app';
 
 type Inputs = {
   title: string;
@@ -9,8 +11,7 @@ type Inputs = {
   type: string;
   exampleRequired: string;
 };
-
-function PostPublication() {
+const PostPublication: NextPageWithLayout = () => {
   const {
     register,
     handleSubmit,
@@ -233,7 +234,7 @@ function PostPublication() {
                 Titulo de la publicacion
               </label>
               <input
-                className="w-full"
+                className="w-full outline-none p-2"
                 type="text"
                 id="title"
                 {...register('title', { required: true })}
@@ -266,7 +267,7 @@ function PostPublication() {
               <div className="mb-6 border rounded-lg border-primary-grayDark">
                 <label htmlFor="recomend">¿Por que lo recomiendas?</label>
                 <textarea
-                  className="w-full h-[115.98px]"
+                  className="w-full h-[115.98px] outline-none p-2"
                   id="message"
                 ></textarea>
               </div>
@@ -275,7 +276,7 @@ function PostPublication() {
                   Link de referencia
                 </label>
                 <input
-                  className="w-full"
+                  className="w-full outline-none p-2"
                   type="text"
                   id="reflink"
                   {...register('reflink', { required: true })}
@@ -283,11 +284,12 @@ function PostPublication() {
                 {errors.exampleRequired && <span>This field is required</span>}
               </div>
             </div>
-            <div
-              onClick={handleFormPublication}
-              className="flex place-content-center"
-            >
-              <NextButton action="siguiente" />
+            <div className="flex place-content-center">
+              <NextButton
+                set={setFormPublication}
+                state={formPublication}
+                action="siguiente"
+              />
             </div>
           </form>
         </div>
@@ -326,11 +328,19 @@ function PostPublication() {
             <li>Image2</li>
             <li>Image3</li>
           </ul>
-          <NextButton action="Publicar" />
+          <NextButton
+            set={setFormPublication}
+            state={formPublication}
+            action="Publicar"
+          />
         </div>
       </div>
     </section>
   );
-}
+};
+
+PostPublication.getLayout = function getLayout(page: ReactElement) {
+  return page;
+};
 
 export default PostPublication;

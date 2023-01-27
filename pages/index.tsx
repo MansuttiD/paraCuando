@@ -14,8 +14,8 @@ const Index = () => {
         title="Sugerencias para ti"
         description="Publicaciones que podrias colaborar"
       />
-      <div className="max-w-[950px] min-h-[250px] ml-16 mt-16 flex flex-col gap-6 md:m-auto md:mt-16">
-        <h2 className="mb-3 h500-normal-24px">Hagamoslo mas personal</h2>
+      <div className="bg-primary-grayLighter pt-[25px] px-[60px] max-w-[950px] min-h-[250px] mt-16 flex flex-col gap-6 md:m-auto md:mt-16 pb-10 text-primary-grayDark">
+        <h2 className="mb-3 h500-normal-24px">¡Hagámoslo más personal!</h2>
         <h3 className="h400-normal-16px">
           Selecciona tus interes para brindarte sugerencia de acuerdo a tus
           gustos

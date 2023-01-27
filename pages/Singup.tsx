@@ -35,7 +35,7 @@ const SignUp: NextPageWithLayout = () => {
                 type="email"
                 id="email"
                 autoComplete="off"
-                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 "
+                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
               />
             </div>
             <div className="flex justify-between ">
@@ -50,7 +50,7 @@ const SignUp: NextPageWithLayout = () => {
                   type="text"
                   id="firstName"
                   autoComplete="off"
-                  className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4"
+                  className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
                 />
               </div>
               <div className="flex flex-col gap-1 w-[182.98px] lg:w-[237px] ">
@@ -64,7 +64,7 @@ const SignUp: NextPageWithLayout = () => {
                   type="text"
                   id="lastName"
                   autoComplete="off"
-                  className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4"
+                  className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
                 />
               </div>
             </div>
@@ -79,7 +79,7 @@ const SignUp: NextPageWithLayout = () => {
                 type="password"
                 id="password"
                 autoComplete="off"
-                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 "
+                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
               />
             </div>
 

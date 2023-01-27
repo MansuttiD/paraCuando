@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="bg-[#1A1E2E] text-[11px] text-white h-[71px] flex pl-6 py-5 justify-between">
+      <header className="bg-primary-black text-[11px] text-white h-[71px] flex pl-6 py-5 justify-between">
         <Link href="/">
           <svg
             width="62"
@@ -46,7 +46,7 @@ export default function Header() {
         <ul className="flex gap-[31px] items-center pr-6">
           <Link href="/postPublication">
             <li
-              className={`gap-3 text-[12px] items-center min-w-[125px] ${
+              className={`text-primary-blue gap-3 text-[12px] items-center min-w-[125px] ${
                 logged == true ? 'hidden lg:flex' : 'flex'
               }`}
             >

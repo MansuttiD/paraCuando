@@ -52,6 +52,7 @@ module.exports = {
           gray: '#A7A6A7',
           grayLight: '#D9D9D9',
           grayLighter: '#F8F7FA',
+          input: '#475E6B',
         },
         secondary: {
           red: '#EF3F47',

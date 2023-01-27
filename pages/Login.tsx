@@ -35,7 +35,7 @@ const Login: NextPageWithLayout = () => {
                 type="email"
                 id="email"
                 autoComplete="off"
-                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 "
+                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
               />
             </div>
             <div className="flex flex-col gap-1 ">
@@ -49,7 +49,7 @@ const Login: NextPageWithLayout = () => {
                 type="password"
                 id="password"
                 autoComplete="off"
-                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 "
+                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
               />
             </div>
             <button className="bg-primary-blue rounded-[5px] h-[45.26px] text-white h400-normal-16px font-semibold ">
