@@ -33,7 +33,7 @@ export default function components() {
         {/* <li>Layout</li> */}
         {/* <Layout /> */}
         <li>NextButton</li>
-        <NextButton action="siguiente" />
+        <NextButton set="" state={false} action="siguiente" />
         {/* <li>SlideNexButton</li>
           <SlideNextButton />
           <li>SlidePrevButton</li>
