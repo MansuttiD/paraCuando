@@ -31,7 +31,7 @@ export default function Profile() {
           <EventCard />
         </div>
         <div className="flex items-center justify-center  lg:hidden">
-          <NextButton action="Ver mas" />
+          <NextButton set="" state={false} action="Ver mas" />
         </div>
       </section>
     </div>
