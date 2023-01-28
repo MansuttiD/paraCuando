@@ -39,6 +39,7 @@ module.exports = {
     },
     dropShadow: {
       '1xl': '0px 2px 4px rgba(0,0,0,0.25)',
+      '2xl': '0px 4px 4px rgba(0,0,0,0.25)',
     },
     extend: {
       colors: {

@@ -14,8 +14,9 @@ export default function SliderCard({ title, description }: props) {
   return (
     <div className="relative w-4/5 p-2 m-auto mt-14">
       <h2 className="h500-normal-24px">{title}</h2>
-      <h3 className="m-5 h400-normal-16px ">{description}</h3>
+      <h3 className="my-5 h400-normal-16px ">{description}</h3>
       <Swiper
+        className="h-[453px]"
         modules={[Navigation, Autoplay]}
         loop={true}
         pagination={{ clickable: true }}

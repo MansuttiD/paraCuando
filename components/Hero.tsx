@@ -16,13 +16,13 @@ const Footer = () => {
         <InputSearch />
       </div>
       <div className="flex gap-2">
-        <Link href="/home/marcas">
+        <Link href="/categories/marcas">
           <Label category="Marcas y tiendas" />
         </Link>
-        <Link href="/home/artistas">
+        <Link href="/categories/artistas">
           <Label category="Artistas y conciertos" />
         </Link>
-        <Link href="/home/torneos">
+        <Link href="/categories/torneos">
           <Label category="Torneos" />
         </Link>
       </div>

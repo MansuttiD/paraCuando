@@ -10,7 +10,7 @@ export default function EventCard() {
   };
 
   return (
-    <div className="w-[300px] h-[450px] m-auto rounded-lg drop-shadow-1xl bg-[#FFFFFF]">
+    <div className="w-[300px] h-[450px] m-auto rounded-[20px] drop-shadow-1xl bg-[#FFFFFF]">
       <div className="w-full bg-[url('/img/tienda.png')] rounded-t-lg h-1/2 ">
         <button
           onClick={changeHeart}
@@ -22,7 +22,7 @@ export default function EventCard() {
 
       <div className="flex flex-col justify-between w-full h-1/2">
         <div>
-          <Link href="/DetailPage">
+          <Link href="/detailPage/detailPage">
             <h2 className=" w-[250px] m-auto h600-medium-20px text-primary-blackLight">
               Tienda de ropa feminina ZARA
             </h2>
