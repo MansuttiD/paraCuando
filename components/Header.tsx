@@ -1,10 +1,16 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import MinMenu from './MinMenu';
 export default function Header() {
   const [logged, setLogged] = useState(true);
+  const [menuActive, setMenuActive] = useState(false);
 
   const handleLogin = () => {
     setLogged(true);
+  };
+
+  const handleMinMenu = () => {
+    setMenuActive(!menuActive);
   };
 
   return (
@@ -140,6 +146,7 @@ export default function Header() {
               daniel.mansutti@gmail.com
             </div>
             <svg
+              onClick={handleMinMenu}
               width="10"
               height="6"
               viewBox="0 0 10 6"
@@ -155,6 +162,13 @@ export default function Header() {
           </div>
         </ul>
       </header>
+      <div
+        className={`absolute right-6 transition-transform ${
+          menuActive ? '' : '-translate-y-96'
+        }`}
+      >
+        <MinMenu />
+      </div>
     </>
   );
 }

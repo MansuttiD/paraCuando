@@ -7,6 +7,7 @@ import HeartLike from '../components/HeartLike';
 import Hero from '../components/Hero';
 import InputSearch from '../components/InputSearch';
 import Label from '../components/Label';
+import MinMenu from '../components/MinMenu';
 import NextButton from '../components/NextButton';
 import SliderCard from '../components/SliderCard';
 
@@ -42,6 +43,8 @@ export default function components() {
         <SliderCard title="Titulo" description="subtitulo" />
         <li>Hero</li>
         <Hero />
+        <li>MinMenu</li>
+        <MinMenu/>
       </ul>
     </div>
   );
