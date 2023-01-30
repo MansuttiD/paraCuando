@@ -14,31 +14,33 @@ const CategoriPage = () => {
         style={{ backgroundImage: `url(/${categories}.jpg)` }}
         className={`px-[20px] py-[23px] h-[204px] bg-no-repeat bg-cover bg-center`}
       >
-        <h4 className="text-white h500-normal-16px  mb-[23px] ">{`Home/${
-          categories == 'marcas'
-            ? 'Marcas'
-            : categories == 'artistas'
-            ? 'Artistas'
-            : 'Torneos'
-        }`}</h4>
-        <h2 className="text-primary-yellow h900-normal-48px mb-[6px]  ">
-          {`${
+        <div className="max-w-[1200px] m-auto">
+          <h4 className="text-white block h500-normal-16px  mb-[23px] ">{`Home/${
             categories == 'marcas'
-              ? 'Marcas y tiendas'
+              ? 'Marcas'
               : categories == 'artistas'
-              ? 'Artistas y Conciertos'
-              : 'Torneos y eventos '
-          }`}
-        </h2>
-        <p className="text-white h500-normal-16px ">
-          {`${
-            categories == 'marcas'
-              ? 'Descubre las marcas y tiendas que la gente quiere cérca'
-              : categories == 'artistas'
-              ? 'Descubre los Artistas y Conciertos que la gente quiere cérca'
-              : 'Descubre los Torneos y eventos que la gente quiere cérca'
-          }`}
-        </p>
+              ? 'Artistas'
+              : 'Torneos'
+          }`}</h4>
+          <h2 className="text-primary-yellow h900-normal-48px mb-[6px]  ">
+            {`${
+              categories == 'marcas'
+                ? 'Marcas y tiendas'
+                : categories == 'artistas'
+                ? 'Artistas y Conciertos'
+                : 'Torneos y eventos '
+            }`}
+          </h2>
+          <p className="text-white h500-normal-16px ">
+            {`${
+              categories == 'marcas'
+                ? 'Descubre las marcas y tiendas que la gente quiere cérca'
+                : categories == 'artistas'
+                ? 'Descubre los Artistas y Conciertos que la gente quiere cérca'
+                : 'Descubre los Torneos y eventos que la gente quiere cérca'
+            }`}
+          </p>
+        </div>
       </div>
       <div className="max-w-[1240px] m-auto ">
         <div className="flex flex-col justify-center mt-[25px]  items-center gap-[22px] lg:gap-[166px] lg:flex-row-reverse">

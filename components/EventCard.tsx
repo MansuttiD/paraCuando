@@ -22,7 +22,7 @@ export default function EventCard() {
 
       <div className="flex flex-col justify-between w-full h-1/2">
         <div>
-          <Link href="/detailpage/detailpage">
+          <Link href="/detail-page/detail-page">
             <h2 className=" w-[250px] m-auto h600-medium-20px text-primary-blackLight">
               Tienda de ropa feminina ZARA
             </h2>

@@ -50,7 +50,7 @@ export default function Header() {
           </svg>
         </Link>
         <ul className="flex gap-[31px] items-center pr-6">
-          <Link href="/postpublication">
+          <Link href="/post-publication">
             <li
               className={`text-primary-blue gap-3 text-[12px] items-center min-w-[125px] ${
                 logged == true ? 'hidden lg:flex' : 'flex'
@@ -102,7 +102,7 @@ export default function Header() {
               <Link href="/login">Login</Link>
             </li>
             <li>
-              <Link href="/singup">Sing Up</Link>
+              <Link href="/sing-up">Sing Up</Link>
             </li>
           </ul>
           <div className="flex gap-4 justify-center items-center sm:pr-8">

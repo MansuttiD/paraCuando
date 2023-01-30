@@ -64,7 +64,7 @@ const Login: NextPageWithLayout = () => {
             </button>
           </form>
           <p className="flex justify-center ">
-            <Link href="/singup">
+            <Link href="/sing-up">
               <span className=" inline-block h-10 w-40 h400-medium-15px text-[16px] leading-[20px] lg:w-full lg:text-center ">
                 Did you forget your password?
               </span>

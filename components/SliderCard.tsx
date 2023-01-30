@@ -27,16 +27,18 @@ export default function SliderCard({ title, description }: props) {
         onSwiper={(swiper) => console.log(swiper)}
         breakpoints={{
           0: {
-            slidesPerView: 1,
+            slidesPerView: 1.01,
           },
           400: {
-            slidesPerView: 1.02,
+            slidesPerView: 1.1,
+            spaceBetween: 30,
           },
           450: {
-            slidesPerView: 1.1,
+            slidesPerView: 1.2,
+            spaceBetween: 20,
           },
           600: {
-            slidesPerView: 1.2,
+            slidesPerView: 1.3,
           },
           800: {
             slidesPerView: 1.5,
