@@ -21,7 +21,7 @@ const Index = () => {
             Selecciona tus interes para brindarte sugerencia de acuerdo a tus
             gustos
           </h3>
-          <div className="flex w-full gap-4 overflow-x-scroll h-[50px]  ">
+          <div className="flex w-full gap-4 overflow-x-scroll h-[50px] md:overflow-x-auto">
             <Label category="Restaurantes" />
             <Label category="Tienda de ropa" />
             <Label category="Rock" />

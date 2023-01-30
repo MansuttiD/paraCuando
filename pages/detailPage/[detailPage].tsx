@@ -119,7 +119,7 @@ export default function DetailPage() {
               Selecciona tus interes para brindarte sugerencia de acuerdo a tus
               gustos
             </h3>
-            <div className="flex overflow-x-scroll w-full gap-4">
+            <div className="flex overflow-x-scroll w-full gap-4  md:overflow-x-auto ">
               <Label category="Restaurantes" />
               <Label category="Tienda de ropa" />
               <Label category="Rock" />

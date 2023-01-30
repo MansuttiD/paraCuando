@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
 
-const SignUp: NextPageWithLayout = () => {
+const signup: NextPageWithLayout = () => {
   return (
     <div className="flex flex-column justify-center lg:grid grid-cols-2 w-screen h-screen ">
       <section className="hidden bg-no-repeat bg-cover justify-center items-center lg:flex w-full bg-[url(/SignUpD.svg)] ">
@@ -107,8 +107,8 @@ const SignUp: NextPageWithLayout = () => {
   );
 };
 
-SignUp.getLayout = function getLayout(page: ReactElement) {
+signup.getLayout = function getLayout(page: ReactElement) {
   return page;
 };
 
-export default SignUp;
+export default signup;
