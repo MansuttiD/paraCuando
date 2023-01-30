@@ -50,7 +50,7 @@ export default function Header() {
           </svg>
         </Link>
         <ul className="flex gap-[31px] items-center pr-6">
-          <Link href="/postPublication">
+          <Link href="/postpublication">
             <li
               className={`text-primary-blue gap-3 text-[12px] items-center min-w-[125px] ${
                 logged == true ? 'hidden lg:flex' : 'flex'
@@ -163,7 +163,7 @@ export default function Header() {
         </ul>
       </header>
       <div
-        className={`absolute right-6 transition-transform ${
+        className={`absolute z-[5000] right-6 transition-transform ${
           menuActive ? '' : '-translate-y-96'
         }`}
       >

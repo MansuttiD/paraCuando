@@ -72,7 +72,7 @@ const CategoriPage = () => {
               Selecciona tus interes para brindarte sugerencia de acuerdo a tus
               gustos
             </h3>
-            <div className="flex flex-wrap w-full gap-4">
+            <div className="flex overflow-x-scroll w-full gap-4">
               <Label category="Restaurantes" />
               <Label category="Tienda de ropa" />
               <Label category="Rock" />

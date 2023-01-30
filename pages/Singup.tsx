@@ -14,7 +14,14 @@ const SignUp: NextPageWithLayout = () => {
       </section>
       <section className="flex flex-col justify-center items-center h-screen gap-2 px-[20px] py-[84px] lg:px-[70px] ">
         <div>
-          <Image src="/pcblue.svg" alt="icon-pcblue" width={187} height={168} />
+          <Link href="/">
+            <Image
+              src="/pcblue.svg"
+              alt="icon-pcblue"
+              width={187}
+              height={168}
+            />
+          </Link>
         </div>
         <div className=" flex flex-col gap-5">
           <h4 className="h600-medium-20px text-[32px] leading-[20px] ">

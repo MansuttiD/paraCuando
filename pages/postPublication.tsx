@@ -232,8 +232,11 @@ const PostPublication: NextPageWithLayout = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="w-full lg:px-[4.5rem]"
           >
-            <div className="mb-6 border rounded-lg border-primary-gray lg:w-full">
-              <label className="h-[49.6px]" htmlFor="title">
+            <div className="mb-6 border rounded-[11px] border-primary-grayDark border-solid lg:w-full">
+              <label
+                className="h-[49.6px] absolute -translate-y-3 bg-white  translate-x-5 "
+                htmlFor="title"
+              >
                 Titulo de la publicacion
               </label>
               <input
@@ -267,15 +270,23 @@ const PostPublication: NextPageWithLayout = () => {
                   <option value="4">Categoria4</option>
                 </select>
               </div>
-              <div className="mb-6 border rounded-lg border-primary-grayDark">
-                <label htmlFor="recomend">¿Por que lo recomiendas?</label>
+              <div className="mb-6 border border-solid rounded-[11px] border-primary-grayDark">
+                <label
+                  className="absolute -translate-y-3 bg-white  translate-x-5 "
+                  htmlFor="recomend"
+                >
+                  ¿Por que lo recomiendas?
+                </label>
                 <textarea
                   className="w-full h-[115.98px] outline-none p-2"
                   id="message"
                 ></textarea>
               </div>
-              <div className="mb-6 border rounded-lg border-primary-gray">
-                <label className="h-[49.6px]" htmlFor="title">
+              <div className="mb-6 border rounded-[11px] border-primary-gray">
+                <label
+                  className="h-[49.6px] absolute -translate-y-3 bg-white  translate-x-5 "
+                  htmlFor="title"
+                >
                   Link de referencia
                 </label>
                 <input
@@ -325,18 +336,54 @@ const PostPublication: NextPageWithLayout = () => {
             Selecciona un máximo de tres fotos para crear una galería
           </span>
         </div>
-        <div className="flex flex-col items-center gap-4">
-          <ul className="flex gap-5 mb-10 border rounded-lg border-primary-gray p-[1rem] lg:p-[8rem] lg:w-[80%] lg:justify-center">
-            <li>Image1</li>
-            <li>Image2</li>
-            <li>Image3</li>
-          </ul>
+        <form className="flex flex-col items-center gap-4">
+          <section className="grid grid-cols-3 w-[320px] h-[168px] gap-5 mb-10 border rounded-[11px] border-primary-gray py-[23px] px-[15px] xs:w-[372px] sm:w-[500px] sm:h-60 md:w-[620px] md:h-64 lg:px-[23px] lg:pt-7 lg:pb-[23px]">
+            <input
+              className="file:hidden file:apperence-none file:invisible file:opacity-0 hidden "
+              type="file"
+              name="Image1"
+              id="Image1"
+              accept="image/*"
+            />
+            <label
+              className="h-full w-full bg-primary-grayLight flex items-center justify-center  "
+              htmlFor="Image1"
+            >
+              +
+            </label>
+            <input
+              className="file:hidden file:apperence-none file:invisible file:opacity-0 hidden "
+              type="file"
+              name="Image2"
+              id="Image2"
+              accept="image/*"
+            />
+            <label
+              className="h-full w-full bg-primary-grayLight flex items-center justify-center  "
+              htmlFor="Image2"
+            >
+              +
+            </label>
+            <input
+              className="file:hidden file:apperence-none file:invisible file:opacity-0 hidden "
+              type="file"
+              name="Image3"
+              id="Image3"
+              accept="image/*"
+            />
+            <label
+              className="h-full w-full bg-primary-grayLight flex items-center justify-center cursor-pointer "
+              htmlFor="Image3"
+            >
+              +
+            </label>
+          </section>
           <NextButton
             set={setFormPublication}
             state={formPublication}
             action="Publicar"
           />
-        </div>
+        </form>
       </div>
     </section>
   );

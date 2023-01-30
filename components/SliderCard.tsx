@@ -28,11 +28,21 @@ export default function SliderCard({ title, description }: props) {
         breakpoints={{
           0: {
             slidesPerView: 1,
-            spaceBetween: 20,
+          },
+          400: {
+            slidesPerView: 1.02,
+          },
+          450: {
+            slidesPerView: 1.1,
+          },
+          600: {
+            slidesPerView: 1.2,
+          },
+          800: {
+            slidesPerView: 1.5,
           },
           900: {
-            slidesPerView: 2,
-            spaceBetween: 20,
+            slidesPerView: 2.05,
           },
           1200: {
             slidesPerView: 3,

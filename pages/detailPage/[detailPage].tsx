@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
@@ -13,7 +14,7 @@ export default function DetailPage() {
   return (
     <div className="m-auto ">
       {/* Input de buaqueda  y etiquetas */}
-      <div className="flex items-center justify-center min-h-[120px] border-b-[1px] drop-shadow-2xl gap-1 sm:gap-10  md:gap-32 ">
+      <div className="flex items-center justify-center mb-[56px] min-h-[120px] shadow-2xl gap-1 sm:gap-10  md:gap-32 ">
         <div className="relative">
           <button
             onClick={handleClickMenu}
@@ -40,9 +41,15 @@ export default function DetailPage() {
                 : 'hidden'
             } md:flex md:flex-row md:static md:bg-transparent md:p-0 md:gap-4`}
           >
-            <Label category="Marcas y tiendas" />
-            <Label category="Artistas y conciertos" />
-            <Label category="Torneos" />
+            <Link href="/categories/marcas">
+              <Label category="Marcas y tiendas" />
+            </Link>
+            <Link href="/categories/artistas">
+              <Label category="Artistas y conciertos" />
+            </Link>
+            <Link href="/categories/torneos">
+              <Label category="Torneos" />
+            </Link>
           </div>
         </div>
         <div className="w-[314px] lg:w-[373px]">
@@ -112,7 +119,7 @@ export default function DetailPage() {
               Selecciona tus interes para brindarte sugerencia de acuerdo a tus
               gustos
             </h3>
-            <div className="flex flex-wrap w-full gap-4">
+            <div className="flex overflow-x-scroll w-full gap-4">
               <Label category="Restaurantes" />
               <Label category="Tienda de ropa" />
               <Label category="Rock" />

@@ -7,7 +7,7 @@ export default function Profile() {
   return (
     <div>
       <section className="h-32 bg-primary-blue "></section>
-      <section>
+      <section className="max-w-[1240px] m-auto ">
         <div className="flex flex-col justify-center items-center translate-y-[-36%] gap-7 ">
           <div>
             <Image
@@ -22,7 +22,7 @@ export default function Profile() {
             <Label category="Mis Publicaciones" />
           </div>
         </div>
-        <div className="flex flex-col gap-11 mb-14 lg:flex-row lg:flex-wrap lg:gap-6 ">
+        <div className="flex gap-11 mx-auto mb-14 flex-row flex-wrap lg:gap-6  ">
           <EventCard />
           <EventCard />
           <EventCard />
