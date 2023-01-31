@@ -286,7 +286,7 @@ const PostPublication: NextPageWithLayout = () => {
               </div>
               <div className="mb-6 border rounded-[11px] border-primary-gray overflow-hidden">
                 <label
-                  className="h-[49.6px] absolute -translate-y-3 bg-white  translate-x-5 pl-1 pr-4"
+                  className=" absolute -translate-y-3 bg-white  translate-x-5 pl-1 pr-4"
                   htmlFor="title"
                 >
                   Link de referencia
