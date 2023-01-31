@@ -22,7 +22,7 @@ export default function components() {
         <li>Header</li>
         <Header />
         <li>Footer</li>
-        <Footer />
+        <Footer style={''} />
         <li>HeartLike</li>
         <HeartLike />
         <li>HeartDisLike</li>
@@ -44,7 +44,7 @@ export default function components() {
         <li>Hero</li>
         <Hero />
         <li>MinMenu</li>
-        <MinMenu/>
+        <MinMenu />
       </ul>
     </div>
   );
