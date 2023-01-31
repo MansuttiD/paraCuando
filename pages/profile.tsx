@@ -1,9 +1,13 @@
 import Image from 'next/image';
+import { ReactElement } from 'react';
 import EventCard from '../components/EventCard';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 import Label from '../components/Label';
 import NextButton from '../components/NextButton';
+import { NextPageWithLayout } from './_app';
 
-export default function Profile() {
+const Profile: NextPageWithLayout = () => {
   return (
     <div>
       <section className="h-32 bg-primary-blue "></section>
@@ -36,4 +40,16 @@ export default function Profile() {
       </section>
     </div>
   );
-}
+};
+
+Profile.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <Header />
+      {page}
+      <Footer style="hidden" />
+    </>
+  );
+};
+
+export default Profile;

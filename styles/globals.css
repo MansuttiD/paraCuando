@@ -27,3 +27,7 @@
     @apply font-sans font-medium text-xs leading-leading-3;
   }
 }
+
+.sizeConfig {
+  min-height: calc(100vh - 293px);
+}

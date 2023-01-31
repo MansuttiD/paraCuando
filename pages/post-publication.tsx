@@ -236,7 +236,7 @@ const PostPublication: NextPageWithLayout = () => {
           >
             <div className="mb-6 border rounded-[11px] border-primary-grayDark border-solid lg:w-full overflow-hidden">
               <label
-                className="h-[49.6px] absolute -translate-y-3 bg-white  translate-x-5 pl-1 pr-4"
+                className="absolute -translate-y-3 bg-white  translate-x-5 pl-1 pr-4"
                 htmlFor="title"
               >
                 Titulo de la publicacion
@@ -348,7 +348,7 @@ const PostPublication: NextPageWithLayout = () => {
               accept="image/*"
             />
             <label
-              className="h-full w-full bg-primary-grayLight flex items-center justify-center  "
+              className="h-full w-full bg-primary-grayLight flex items-center justify-center  text-5xl text-primary-blue "
               htmlFor="Image1"
             >
               +
@@ -361,7 +361,7 @@ const PostPublication: NextPageWithLayout = () => {
               accept="image/*"
             />
             <label
-              className="h-full w-full bg-primary-grayLight flex items-center justify-center  "
+              className="h-full w-full bg-primary-grayLight flex items-center justify-center text-5xl text-primary-blue "
               htmlFor="Image2"
             >
               +
@@ -374,7 +374,7 @@ const PostPublication: NextPageWithLayout = () => {
               accept="image/*"
             />
             <label
-              className="h-full w-full bg-primary-grayLight flex items-center justify-center cursor-pointer "
+              className="h-full w-full bg-primary-grayLight flex items-center justify-center cursor-pointer text-5xl text-primary-blue  "
               htmlFor="Image3"
             >
               +

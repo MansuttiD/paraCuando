@@ -1,6 +1,11 @@
-export default function configurationPage() {
+import { ReactElement } from 'react';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import { NextPageWithLayout } from './_app';
+
+const configurationPage: NextPageWithLayout = () => {
   return (
-    <div>
+    <div className="sizeConfig">
       <div className="h-[129px] bg-primary-blue flex items-center">
         <h2 className="text-white ml-14 md:ml-24 h900-normal-48px">Perfil</h2>
       </div>
@@ -11,9 +16,20 @@ export default function configurationPage() {
           <span className=" h400-normal-16px text-primary-blackLight">
             Agrega una foto para tu perfil
           </span>
-          <div className="w-[177px] h-[208px] mt-5 bg-primary-grayLight flex items-center justify-center">
-            <span className="text-5xl text-primary-blue">+</span>
-          </div>
+          <form className="w-[177px] h-[208px] mt-5 bg-primary-grayLight flex items-center justify-center">
+            <input
+              className="file:hidden file:apperence-none file:invisible file:opacity-0 hidden "
+              type="file"
+              name="perfilPicture"
+              id="perfilPicture"
+            />
+            <label
+              htmlFor="perfilPicture"
+              className="text-5xl text-primary-blue"
+            >
+              +
+            </label>
+          </form>
         </div>
 
         <div>
@@ -50,4 +66,16 @@ export default function configurationPage() {
       </div>
     </div>
   );
-}
+};
+
+configurationPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <Header />
+      {page}
+      <Footer style="hidden" />
+    </>
+  );
+};
+
+export default configurationPage;

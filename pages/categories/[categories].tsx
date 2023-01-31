@@ -14,7 +14,7 @@ const CategoriPage = () => {
         style={{ backgroundImage: `url(/${categories}.jpg)` }}
         className={`px-[20px] py-[23px] h-[204px] bg-no-repeat bg-cover bg-center`}
       >
-        <div className="max-w-[1200px] m-auto">
+        <div className="max-w-[992px] m-auto ">
           <h4 className="text-white block h500-normal-16px  mb-[23px] ">{`Home/${
             categories == 'marcas'
               ? 'Marcas'
@@ -47,7 +47,7 @@ const CategoriPage = () => {
           <div className="w-[373px]">
             <InputSearch />
           </div>
-          <div className="flex flex-wrap gap-[2px] justify-center ">
+          <div className="flex flex-wrap gap-[9px] justify-center ">
             <Link href="/categories/marcas">
               <Label category="Marcas y tiendas" />
             </Link>

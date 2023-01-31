@@ -11,7 +11,7 @@ export default function Layout({ children }: AppProps) {
     <div>
       <Header />
       {children}
-      <Footer />
+      <Footer style="" />
     </div>
   );
 }
