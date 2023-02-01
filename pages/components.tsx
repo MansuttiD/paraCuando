@@ -18,7 +18,12 @@ export default function components() {
         <li>ArrowButton</li>
         <ArrowButton />
         <li>EventCard</li>
-        <EventCard />
+        <EventCard
+          title="Tienda de ropa femenina ZARA"
+          description="Tienda de ropa"
+          domain="ladygaga.com"
+          counter="91800756"
+        />
         <li>Header</li>
         <Header />
         <li>Footer</li>
