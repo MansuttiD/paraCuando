@@ -3,7 +3,19 @@ import { useState } from 'react';
 import HeartDisLike from './HeartDisLike';
 import HeartLike from './HeartLike';
 
-export default function EventCard() {
+type AppProps = {
+  title: string;
+  description: string;
+  domain: string;
+  counter: string;
+};
+
+export default function EventCard({
+  title,
+  description,
+  domain,
+  counter,
+}: AppProps) {
   const [likeHeart, setLikeHeart] = useState(false);
   const changeHeart = () => {
     setLikeHeart(!likeHeart);
@@ -24,16 +36,16 @@ export default function EventCard() {
         <div>
           <Link href="/detail-page/detail-page">
             <h2 className=" w-[250px] m-auto h600-medium-20px text-primary-blackLight">
-              Tienda de ropa feminina ZARA
+              {title}
             </h2>
           </Link>
           <p className="w-[250px] m-auto text-primary-grayDark h400-medium-15px  mt-2">
-            Tienda de ropa
+            {description}
           </p>
         </div>
         <div className="w-[250px] mb-7 m-auto">
           <span className="text-[#1B4DB1] block h500-medium-14px  mb-3">
-            laydigaga.com
+            {domain}
           </span>
           <span className="h500-medium-14px  flex items-center gap-3 text-[#1A1E2E]">
             <svg
@@ -49,7 +61,7 @@ export default function EventCard() {
                 strokeWidth="1.5"
               />
             </svg>
-            90800756 votos
+            {counter} votos
           </span>
         </div>
       </div>

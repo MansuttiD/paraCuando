@@ -8,6 +8,7 @@ import NextButton from '../components/NextButton';
 import { NextPageWithLayout } from './_app';
 
 const Profile: NextPageWithLayout = () => {
+  const arrCard: number[] = [1, 2, 3, 4, 5, 6];
   return (
     <div>
       <section className="h-32 bg-primary-blue "></section>
@@ -27,12 +28,15 @@ const Profile: NextPageWithLayout = () => {
           </div>
         </div>
         <div className="flex gap-11 mx-auto mb-14 flex-row flex-wrap lg:gap-6  ">
-          <EventCard />
-          <EventCard />
-          <EventCard />
-          <EventCard />
-          <EventCard />
-          <EventCard />
+          {arrCard.map((card) => (
+            <EventCard
+              key={card}
+              title="Tienda de ropa femenina ZARA"
+              description="Tienda de ropa"
+              domain="ladygaga.com"
+              counter="91800756"
+            />
+          ))}
         </div>
         <div className="flex items-center justify-center  lg:hidden">
           <NextButton set="" state={false} action="Ver mas" />

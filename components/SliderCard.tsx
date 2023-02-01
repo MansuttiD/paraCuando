@@ -53,7 +53,12 @@ export default function SliderCard({ title, description }: props) {
         >
           {arrCard.map((card) => (
             <SwiperSlide key={card}>
-              <EventCard />
+              <EventCard
+                title="Tienda de ropa femenina ZARA"
+                description="Tienda de ropa"
+                domain="ladygaga.com"
+                counter="90800756"
+              />
             </SwiperSlide>
           ))}
           <div className="absolute top-1/2 -right-[6%]">
