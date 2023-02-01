@@ -5,7 +5,7 @@ export default function ArrowButton() {
   return (
     <button
       onClick={() => swiper.slideNext()}
-      className="bg-white hidden rounded-full w-[52px] h-[52px]  justify-center items-center absolute top-1/2 right-0 z-10 md:flex "
+      className="bg-white hidden rounded-full w-[52px] h-[52px]  justify-center items-center z-10 md:flex "
     >
       <svg
         width="59"
