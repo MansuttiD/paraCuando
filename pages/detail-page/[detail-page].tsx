@@ -4,6 +4,7 @@ import { useState } from 'react';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import SliderCard from '../../components/SliderCard';
+import events from '../../data/lib.json';
 
 export default function DetailPage() {
   const [showMenuLabels, setShowMenuLabes] = useState(false);
@@ -134,7 +135,11 @@ export default function DetailPage() {
 
         {/* Slider de mas eventos */}
 
-        <SliderCard title="title_1" description="Desription One" />
+        <SliderCard
+          events={events}
+          title="title_1"
+          description="Desription One"
+        />
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import Label from '../components/Label';
 import MinMenu from '../components/MinMenu';
 import NextButton from '../components/NextButton';
 import SliderCard from '../components/SliderCard';
+import events from '../data/lib.json';
 
 export default function components() {
   return (
@@ -45,7 +46,7 @@ export default function components() {
           <li>SlidePrevButton</li>
           <SlidePrevButton /> */}
         <li>SliderCard</li>
-        <SliderCard title="Titulo" description="subtitulo" />
+        <SliderCard events={events} title="Titulo" description="subtitulo" />
         <li>Hero</li>
         <Hero />
         <li>MinMenu</li>

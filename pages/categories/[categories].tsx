@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import SliderCard from '../../components/SliderCard';
+import events from '../../data/lib.json';
 
 const CategoriPage = () => {
   const router = useRouter();
@@ -61,10 +62,12 @@ const CategoriPage = () => {
         </div>
         <div>
           <SliderCard
+            events={events}
             title="Populares en Queretaro"
             description="Lo que las personas piden mas"
           />
           <SliderCard
+            events={events}
             title="Sugerencias para ti"
             description="Publicaciones que podrias colaborar"
           />
@@ -86,6 +89,7 @@ const CategoriPage = () => {
             </a>
           </div>
           <SliderCard
+            events={events}
             title="Recientes"
             description="Las personas ultimamente estan hablando de esto"
           />

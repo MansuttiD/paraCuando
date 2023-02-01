@@ -7,10 +7,17 @@ import EventCard from './EventCard';
 interface props {
   title: string;
   description: string;
+  events: any;
 }
 
-export default function SliderCard({ title, description }: props) {
-  const arrCard: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+interface myobj {
+  title: string;
+  description: string;
+  domain: string;
+  counter: string;
+}
+
+export default function SliderCard({ title, description, events }: props) {
   return (
     <div className="relative w-4/5 p-2 m-auto mt-14">
       <h2 className="h500-normal-24px">{title}</h2>
@@ -51,13 +58,13 @@ export default function SliderCard({ title, description }: props) {
             },
           }}
         >
-          {arrCard.map((card) => (
-            <SwiperSlide key={card}>
+          {events.map((event: myobj) => (
+            <SwiperSlide key={event.domain}>
               <EventCard
-                title="Tienda de ropa femenina ZARA"
-                description="Tienda de ropa"
-                domain="ladygaga.com"
-                counter="90800756"
+                title={event.title}
+                description={event.description}
+                domain={event.domain}
+                counter={event.counter}
               />
             </SwiperSlide>
           ))}
