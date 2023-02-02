@@ -4,7 +4,7 @@ import { useState } from 'react';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import SliderCard from '../../components/SliderCard';
-import events from '../../data/lib.json';
+import events from '../../lib/data/lib.json';
 
 export default function DetailPage() {
   const [showMenuLabels, setShowMenuLabes] = useState(false);

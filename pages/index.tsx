@@ -1,9 +1,24 @@
 import Hero from '../components/Hero';
 import Label from '../components/Label';
 import SliderCard from '../components/SliderCard';
-import events from '../data/lib.json';
+import events from '../lib/data/lib.json';
+import { usePublication } from '../lib/services/publications.services';
 
 const Index = () => {
+  const { data, error, isLoading } = usePublication();
+
+  if (isLoading) {
+    return <div>cargando</div>;
+  }
+
+  if (error) {
+    <div>ocurrio algo</div>;
+  }
+
+  if (data) {
+    console.log(data);
+  }
+
   return (
     <div>
       <Hero />

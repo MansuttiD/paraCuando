@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import SliderCard from '../../components/SliderCard';
-import events from '../../data/lib.json';
+import events from '../../lib/data/lib.json';
 
 const CategoriPage = () => {
   const router = useRouter();

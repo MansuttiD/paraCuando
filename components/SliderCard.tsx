@@ -4,17 +4,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import ArrowButton from './ArrowButton';
 import EventCard from './EventCard';
 
-interface props {
-  title: string;
-  description: string;
-  events: any;
-}
-
 interface myobj {
   title: string;
   description: string;
   domain: string;
   counter: string;
+}
+
+interface props {
+  title: string;
+  description: string;
+  events: myobj[];
 }
 
 export default function SliderCard({ title, description, events }: props) {
@@ -44,7 +44,7 @@ export default function SliderCard({ title, description, events }: props) {
               spaceBetween: 20,
             },
             600: {
-              slidesPerView: 1.3,
+              slidesPerView: 1.4,
             },
             800: {
               slidesPerView: 1.5,

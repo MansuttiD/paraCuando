@@ -5,7 +5,7 @@ export default function MinMenu() {
     <div className=" w-[250px]  min-h-[218px] rounded-[25px] px-[29px] pt-[32px] pb-[10px] shadow-[-5px_8px_31px_-8px_rgba(0,0,0,0.25)] bg-white ">
       <ul className="flex flex-col gap-[22px] mb-[23px] border-b-2 border-solid border-primary-grayDark  ">
         <li className="text-primary-blue text-[18px] items-center min-w-[125px] flex lg:hidden ">
-          <Link href="/postPublication">
+          <Link href="/post-publication">
             <div className="flex gap-3 ">
               <svg
                 width="16"
