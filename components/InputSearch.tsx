@@ -1,8 +1,8 @@
 export default function InputSearch() {
   return (
-    <form className="w-full">
+    <form className="w-full  ">
       <div
-        className={`flex items-center justify-around bg-white w-full h-11 rounded-3xl text-primary-gray border-solid border-[1px] border-primary-gray`}
+        className={`flex overflow-hidden  items-center justify-around bg-white w-full h-11 rounded-3xl text-primary-gray border-solid border-[1px] border-primary-gray`}
       >
         <input
           className="w-4/5 h-full bg-white h500-medium-14px outline-none"

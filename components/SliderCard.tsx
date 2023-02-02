@@ -19,13 +19,13 @@ interface props {
 
 export default function SliderCard({ title, description, events }: props) {
   return (
-    <div className="relative w-4/5 p-2 m-auto mt-14">
+    <div className="relative w-[90%] p-2  mx-auto mt-14 sm:w-4/5  ">
       <h2 className="h500-normal-24px">{title}</h2>
       <h3 className="my-5 h400-normal-16px ">{description}</h3>
       <div>
         <Swiper
           style={{ position: 'unset' }}
-          className="h-[453px]"
+          className="h-[453px] "
           modules={[Navigation, Autoplay]}
           loop={true}
           pagination={{ clickable: true }}
@@ -33,14 +33,14 @@ export default function SliderCard({ title, description, events }: props) {
           grabCursor={true}
           breakpoints={{
             0: {
-              slidesPerView: 1.01,
+              slidesPerView: 1.1,
+              spaceBetween: 20,
             },
             400: {
-              slidesPerView: 1.1,
-              spaceBetween: 30,
-            },
-            450: {
               slidesPerView: 1.2,
+            },
+            500: {
+              slidesPerView: 1.3,
               spaceBetween: 20,
             },
             600: {
@@ -50,7 +50,7 @@ export default function SliderCard({ title, description, events }: props) {
               slidesPerView: 1.5,
             },
             900: {
-              slidesPerView: 2.05,
+              slidesPerView: 2,
             },
             1200: {
               slidesPerView: 3,

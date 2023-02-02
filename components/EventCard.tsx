@@ -22,7 +22,7 @@ export default function EventCard({
   };
 
   return (
-    <div className="w-[300px] h-[450px] m-auto rounded-[20px] drop-shadow-1xl bg-[#FFFFFF]">
+    <div className="w-[300px] h-[450px] ml-[1px] rounded-[20px] drop-shadow-1xl bg-[#FFFFFF] sm:ml-1 ">
       <div className="w-full bg-[url('/img/tienda.png')] rounded-t-lg h-1/2 mb-[15px] ">
         <button
           onClick={changeHeart}

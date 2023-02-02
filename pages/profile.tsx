@@ -27,7 +27,7 @@ const Profile: NextPageWithLayout = () => {
             <Label category="Mis Publicaciones" />
           </div>
         </div>
-        <div className="flex gap-11 mx-auto mb-14 flex-row flex-wrap lg:gap-6  ">
+        <div className="flex gap-10 mx-auto mb-14 flex-wrap md:gap-6 justify-center  ">
           {arrCard.map((card) => (
             <EventCard
               key={card}
