@@ -10,7 +10,7 @@ import Label from '../components/Label';
 import MinMenu from '../components/MinMenu';
 import NextButton from '../components/NextButton';
 import SliderCard from '../components/SliderCard';
-import events from '../data/lib.json';
+import events from '../lib/data/lib.json';
 
 export default function components() {
   return (
