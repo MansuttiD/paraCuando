@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import MinMenu from './MinMenu';
-export default function Header() {
-  const [logged, setLogged] = useState(true);
-  const [menuActive, setMenuActive] = useState(false);
 
-  const handleLogin = () => {
-    setLogged(true);
-  };
+export default function Header() {
+  const [logged, setLogged] = useState<boolean>(false);
+  const [menuActive, setMenuActive] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   let cooki = Cookies.get('token');
+  //   if (cooki) {
+  //     setLogged(true);
+  //   }
+  // }, [logged]);
 
   const handleMinMenu = () => {
     setMenuActive(!menuActive);
@@ -96,7 +100,6 @@ export default function Header() {
 
           <ul
             className={`flex gap-[21px] font-black ${logged ? 'hidden' : ''}`}
-            onClick={handleLogin}
           >
             <li>
               <Link href="/login">Login</Link>

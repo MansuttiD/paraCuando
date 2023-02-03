@@ -3,7 +3,7 @@ import { fetcher } from '../helpers/fetcher';
 
 function usePublication() {
   const { data, error, isLoading, mutate } = useSMR(
-    'http://68.183.49.192:8001/api/v1/publications',
+    'https://paracuando-team1.academlo.tech/api/v1/publications',
     fetcher
   );
   return {

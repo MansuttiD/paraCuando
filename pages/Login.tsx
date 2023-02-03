@@ -1,9 +1,31 @@
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import type { ReactElement } from 'react';
+import { useForm } from 'react-hook-form';
+import { login } from '../lib/services/autenticate.services';
 import type { NextPageWithLayout } from './_app';
 
+type Inputs = {
+  password: string;
+  email: string;
+};
+
 const Login: NextPageWithLayout = () => {
+  const { handleSubmit, register } = useForm<Inputs>();
+
+  const router = useRouter();
+
+  const submit = (data: { email: string; password: string }) => {
+    login(data)
+      .then((res) => {
+        Cookies.set('token', res.data.token);
+        router.push('/profile');
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="flex flex-column justify-center lg:grid grid-cols-2 w-screen h-screen">
       <section className="hidden bg-no-repeat bg-cover justify-center items-center lg:flex w-full bg-[url(/LoginD.svg)]  ">
@@ -30,7 +52,10 @@ const Login: NextPageWithLayout = () => {
           <p className="h400-medium-15px text-[16px] leading-[20px] ">
             Login with the data you entered during your registration.
           </p>
-          <form className="flex flex-col gap-2 w-[374px] lg:w-[487px]  ">
+          <form
+            onSubmit={handleSubmit(submit)}
+            className="flex flex-col gap-2 w-[374px] lg:w-[487px]  "
+          >
             <div className="flex flex-col gap-1 ">
               <label
                 htmlFor="email"
@@ -43,6 +68,7 @@ const Login: NextPageWithLayout = () => {
                 id="email"
                 autoComplete="off"
                 className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
+                {...register('email', { required: true })}
               />
             </div>
             <div className="flex flex-col gap-1 ">
@@ -57,6 +83,7 @@ const Login: NextPageWithLayout = () => {
                 id="password"
                 autoComplete="off"
                 className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
+                {...register('password', { required: true })}
               />
             </div>
             <button className="bg-primary-blue rounded-[5px] h-[45.26px] text-white h400-normal-16px font-semibold ">
