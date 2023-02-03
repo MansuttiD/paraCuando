@@ -3,23 +3,22 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import NextButton from '../components/NextButton';
+import { Publication } from '../lib/interfaces/publication.interface';
+import { usePublicationsTypes } from '../lib/services/category.services';
+import { publicationPost } from '../lib/services/publications.services';
+import { useAllMyTags } from '../lib/services/tags.services';
 import type { NextPageWithLayout } from './_app';
 
-type Inputs = {
-  title: string;
-  reflink: string;
-  category: string;
-  type: string;
-  exampleRequired: string;
-};
 const PostPublication: NextPageWithLayout = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<Publication>();
+  const onSubmit: SubmitHandler<Publication> = (data) => publicationPost(data);
   const [formPublication, setFormPublication] = useState(false);
+  const { data: publicationsTypes } = usePublicationsTypes();
+  const { data: publicationTags } = useAllMyTags();
 
   const handleFormPublication = () => {
     setFormPublication(!formPublication);
@@ -254,22 +253,24 @@ const PostPublication: NextPageWithLayout = () => {
                 <select
                   className="h-[51px] outline-none rounded-lg border border-primary-grayDark md:min-w-[300px] lg:w-full"
                   id="type"
-                  {...register('type', { required: true })}
+                  {...register('tags', { required: true })}
                 >
-                  <option value="Tipo1">Tipo1</option>
-                  <option value="Tipo2">Tipo2</option>
-                  <option value="Tipo3">Tipo3</option>
-                  <option value="Tipo4">Tipo4</option>
+                  {publicationTags?.map((tag) => (
+                    <option key={tag.id} value={tag.id}>
+                      {tag.name}
+                    </option>
+                  ))}
                 </select>
                 <select
                   className="h-[51px] outline-none rounded-lg border border-primary-grayDark md:min-w-[300px] lg:w-full"
                   id="category"
-                  {...register('category')}
+                  {...register('publication_type_id')}
                 >
-                  <option value="1">Categoria1</option>
-                  <option value="2">Categoria2</option>
-                  <option value="3">Categoria3</option>
-                  <option value="4">Categoria4</option>
+                  {publicationsTypes?.map((type) => (
+                    <option key={type.id} value={type.id}>
+                      {type.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="mb-6 border border-solid rounded-[11px] border-primary-grayDark overflow-hidden">
@@ -281,7 +282,8 @@ const PostPublication: NextPageWithLayout = () => {
                 </label>
                 <textarea
                   className="w-full h-[115.98px] outline-none p-2"
-                  id="message"
+                  id="description"
+                  {...register('description', { required: true })}
                 ></textarea>
               </div>
               <div className="mb-6 border rounded-[11px] border-primary-gray overflow-hidden">
@@ -295,7 +297,7 @@ const PostPublication: NextPageWithLayout = () => {
                   className="w-full outline-none p-2"
                   type="text"
                   id="reflink"
-                  {...register('reflink', { required: true })}
+                  {...register('urlShare', { required: true })}
                 />
                 {errors.exampleRequired && <span>This field is required</span>}
               </div>

@@ -2,14 +2,13 @@ import axios from 'axios';
 import getConfig from 'next/config';
 import useSMR from 'swr';
 import { fetcher } from '../helpers/fetcher';
-import { Publication } from '../interfaces/publication.interface';
 
 const { publicRuntimeConfig } = getConfig();
 const BASE_URL = publicRuntimeConfig.BASE_URL;
 
-function usePublication() {
+function useMyUserInfo() {
   const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/publications`,
+    `${BASE_URL}/users/user-info`,
     fetcher
   );
   return {
@@ -20,13 +19,9 @@ function usePublication() {
   };
 }
 
-function publicationPost(data: Publication) {
-  return axios.post(`${BASE_URL}/publications`, data);
-}
-
-function usePublicationId(id: string) {
+function useMyVotes(id: string) {
   const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/publications${id}`,
+    `${BASE_URL}/users/${id}/votes`,
     fetcher
   );
   return {
@@ -37,9 +32,9 @@ function usePublicationId(id: string) {
   };
 }
 
-function usePublicationIdVotes(id: string) {
+function useMyPublications(id: string) {
   const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/publications${id}/votes`,
+    `${BASE_URL}/users/${id}/publications`,
     fetcher
   );
   return {
@@ -50,14 +45,18 @@ function usePublicationIdVotes(id: string) {
   };
 }
 
-function usePublicationDeleted(id: string) {
-  return axios.delete(`${BASE_URL}/publications${id}`);
+function updateMyUser(
+  data: {
+    username: string;
+    first_name: string;
+    last_name: string;
+    image_url: string;
+    code_phone: number;
+    phone: number;
+  },
+  id: string
+) {
+  return axios.put(`${BASE_URL}/users/${id}`, data);
 }
 
-export {
-  usePublication,
-  publicationPost,
-  usePublicationId,
-  usePublicationIdVotes,
-  usePublicationDeleted,
-};
+export { useMyUserInfo, useMyVotes, useMyPublications, updateMyUser };

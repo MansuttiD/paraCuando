@@ -20,7 +20,7 @@ const Login: NextPageWithLayout = () => {
   const submit = (data: { email: string; password: string }) => {
     login(data)
       .then((res) => {
-        Cookies.set('token', res.data.token);
+        Cookies.set('token', res.data.token[0].public);
         router.push('/profile');
       })
       .catch((err) => console.log(err));

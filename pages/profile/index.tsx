@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { ReactElement } from 'react';
-import EventCard from '../components/EventCard';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import Label from '../components/Label';
-import NextButton from '../components/NextButton';
-import { NextPageWithLayout } from './_app';
+import EventCard from '../../components/EventCard';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import Label from '../../components/Label';
+import NextButton from '../../components/NextButton';
+import { NextPageWithLayout } from '../_app';
 
 const Profile: NextPageWithLayout = () => {
   const arrCard: number[] = [1, 2, 3, 4, 5, 6];
