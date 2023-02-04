@@ -15,7 +15,10 @@ const PostPublication: NextPageWithLayout = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Publication>();
-  const onSubmit: SubmitHandler<Publication> = (data) => publicationPost(data);
+
+  const onSubmit: SubmitHandler<Publication> = (data) =>
+    publicationPost(data).then((res) => console.log(res));
+
   const [formPublication, setFormPublication] = useState(false);
   const { data: publicationsTypes } = usePublicationsTypes();
   const { data: publicationTags } = useAllMyTags();

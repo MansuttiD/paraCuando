@@ -1,36 +1,28 @@
 import axios from 'axios';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
+const BASE_URL = publicRuntimeConfig.BASE_URL;
 
 function login(data: { email: string; password: string }) {
-  return axios.post(
-    'https://paracuando-team1.academlo.tech/api/v1/auth/login',
-    data
-  );
+  return axios.post(`${BASE_URL}/auth/login`, data);
 }
 
-function signup(data: {
+function userSignup(data: {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
 }) {
-  return axios.post(
-    'https://paracuando-team1.academlo.tech/api/v1/auth/sing-up',
-    data
-  );
+  return axios.post(`${BASE_URL}/auth/sign-up`, data);
 }
 
 function forgetPassword(data: { email: string }) {
-  return axios.post(
-    'https://paracuando-team1.academlo.tech/api/v1/auth/forget-password',
-    data
-  );
+  return axios.post(`${BASE_URL}/auth/forget-password`, data);
 }
 
 function changePassword(data: { password: string }, token: string) {
-  return axios.post(
-    `https://paracuando-team1.academlo.tech/api/v1/auth/change-password/${token}`,
-    data
-  );
+  return axios.post(`${BASE_URL}/auth/change-password/${token}`, data);
 }
 
-export { login, signup, forgetPassword, changePassword };
+export { login, userSignup, forgetPassword, changePassword };

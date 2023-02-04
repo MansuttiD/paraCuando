@@ -1,6 +1,7 @@
 import axios from 'axios';
 import getConfig from 'next/config';
 import useSMR from 'swr';
+import instance from '../helpers/axios.helper';
 import { fetcher } from '../helpers/fetcher';
 import { Publication } from '../interfaces/publication.interface';
 
@@ -21,7 +22,7 @@ function usePublication() {
 }
 
 function publicationPost(data: Publication) {
-  return axios.post(`${BASE_URL}/publications`, data);
+  return instance.post(`${BASE_URL}/publications`, data);
 }
 
 function usePublicationId(id: string) {
