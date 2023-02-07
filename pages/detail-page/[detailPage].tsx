@@ -15,8 +15,6 @@ export default function DetailPage() {
   const { data } = usePublicationId(detailPage);
   const allEvents = useAppSelector((state) => state.events);
 
-  console.log(allEvents);
-
   const handleClickMenu = () => {
     setShowMenuLabes(!showMenuLabels);
   };

@@ -1,5 +1,4 @@
 import ArrowButton from '../components/ArrowButton';
-import EventCard from '../components/EventCard';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HeartDisLike from '../components/HeartDisLike';
@@ -9,8 +8,6 @@ import InputSearch from '../components/InputSearch';
 import Label from '../components/Label';
 import MinMenu from '../components/MinMenu';
 import NextButton from '../components/NextButton';
-import SliderCard from '../components/SliderCard';
-import events from '../lib/data/lib.json';
 
 export default function components() {
   return (
@@ -18,13 +15,13 @@ export default function components() {
       <ul>
         <li>ArrowButton</li>
         <ArrowButton />
-        <li>EventCard</li>
+        {/* <li>EventCard</li>
         <EventCard
           title="Tienda de ropa femenina ZARA"
           description="Tienda de ropa"
           domain="ladygaga.com"
           counter="91800756"
-        />
+        /> */}
         <li>Header</li>
         <Header />
         <li>Footer</li>
@@ -45,8 +42,8 @@ export default function components() {
           <SlideNextButton />
           <li>SlidePrevButton</li>
           <SlidePrevButton /> */}
-        <li>SliderCard</li>
-        <SliderCard events={events} title="Titulo" description="subtitulo" />
+        {/* <li>SliderCard</li>
+        <SliderCard events={events} title="Titulo" description="subtitulo" /> */}
         <li>Hero</li>
         <Hero />
         <li>MinMenu</li>
