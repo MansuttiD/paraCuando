@@ -38,9 +38,9 @@ function usePublicationId(id: string | string[] | undefined) {
   };
 }
 
-function usePublicationIdVotes(id: string) {
+function usePublicationIdVotes(id: string | string[] | undefined) {
   const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/publications${id}/votes`,
+    `${BASE_URL}/publications/${id}/votes`,
     fetcher
   );
   return {

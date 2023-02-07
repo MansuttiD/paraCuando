@@ -245,6 +245,7 @@ const PostPublication: NextPageWithLayout = () => {
                 Titulo de la publicacion
               </label>
               <input
+                maxLength={38}
                 className="w-full outline-none p-2"
                 type="text"
                 id="title"
@@ -336,7 +337,7 @@ const PostPublication: NextPageWithLayout = () => {
               fill="#1B4DB1"
             />
           </svg>
-          <div className="w-[98%] h-[8px] bg-[#1B4DB1] rounded-lg lg:ml-[4.5rem] lg:w-[81%] mb-4"></div>
+          <div className="w-[98%] h-[8px] bg-primary-blue rounded-lg lg:ml-[4.5rem] lg:w-[81%] mb-4"></div>
         </div>
         <div className="flex flex-col justify-start  gap-3 lg:px-[4.5rem]">
           <h2 className="text-[24px] font-medium leading-7 mb-4">Fotos</h2>

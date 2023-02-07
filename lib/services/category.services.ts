@@ -19,4 +19,17 @@ function usePublicationsTypes() {
   };
 }
 
-export { usePublicationsTypes };
+function usePublicationsTypesByCategory(category: any) {
+  const { data, error, isLoading, mutate } = useSMR<any>(
+    `${BASE_URL}/publications-types/${category}`,
+    fetcher
+  );
+  return {
+    data: data?.results,
+    error,
+    isLoading,
+    mutate,
+  };
+}
+
+export { usePublicationsTypes, usePublicationsTypesByCategory };

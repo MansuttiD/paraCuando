@@ -3,14 +3,17 @@ import { useRouter } from 'next/router';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import SliderCard from '../../components/SliderCard';
-import { useAppSelector } from '../../store/hooks';
+import { usePublicationsTypesByCategory } from '../../lib/services/category.services';
 
 const CategoriPage = () => {
   const router = useRouter();
   const { categories } = router.query;
-  const allEvents = useAppSelector((state) => state.events);
+  const { data } = usePublicationsTypesByCategory(
+    categories == 'marcas' ? 1 : 2
+  );
+  console.log(data);
 
-  if (allEvents) {
+  if (data) {
     return (
       <div>
         <div
@@ -64,12 +67,12 @@ const CategoriPage = () => {
           </div>
           <div>
             <SliderCard
-              events={allEvents.events}
+              events={data}
               title="Populares en Queretaro"
               description="Lo que las personas piden mas"
             />
             <SliderCard
-              events={allEvents.events}
+              events={data}
               title="Sugerencias para ti"
               description="Publicaciones que podrias colaborar"
             />
@@ -93,7 +96,7 @@ const CategoriPage = () => {
               </a>
             </div>
             <SliderCard
-              events={allEvents.events}
+              events={data}
               title="Recientes"
               description="Las personas ultimamente estan hablando de esto"
             />

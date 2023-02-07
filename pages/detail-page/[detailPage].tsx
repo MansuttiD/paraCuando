@@ -5,7 +5,10 @@ import { useState } from 'react';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import SliderCard from '../../components/SliderCard';
-import { usePublicationId } from '../../lib/services/publications.services';
+import {
+  usePublicationId,
+  usePublicationIdVotes,
+} from '../../lib/services/publications.services';
 import { useAppSelector } from '../../store/hooks';
 
 export default function DetailPage() {
@@ -14,9 +17,15 @@ export default function DetailPage() {
   const [showMenuLabels, setShowMenuLabes] = useState(false);
   const { data } = usePublicationId(detailPage);
   const allEvents = useAppSelector((state) => state.events);
+  const vote = usePublicationIdVotes(detailPage);
 
   const handleClickMenu = () => {
     setShowMenuLabes(!showMenuLabels);
+  };
+
+  const handleVote = () => {
+    vote;
+    console.log(vote);
   };
 
   if (allEvents.events) {
@@ -68,13 +77,13 @@ export default function DetailPage() {
         <div className="max-w-[1230px] m-auto  ">
           {/* Informacion sobre el evento, Descripcion, Artista, Genero, Pagina etc */}
           <div className="flex items-center justify-center w-full m-auto">
-            <div className=" flex flex-col  gap-10 p-4 m-auto  items-center lg:grid lg:grid-rows-2 lg:grid-cols-5 lg:w-4/5 lg:h-[450px]">
-              <div className="h-full col-start-1 col-end-3 row-start-1 row-end-2 pl-9">
+            <div className=" flex flex-col  gap-10 p-4 m-auto  items-center lg:grid  lg:grid-cols-5 lg:w-4/5 lg:h-[450px] lg:mb-24 ">
+              <div className="h-full col-start-1 col-end-3 row-start-1 row-end-2 ">
                 <span className="h500-normal-16px">Artista / Pop / Rock</span>
-                <h2 className=" h900-normal-48px h900-normal-48px lg:w-min-[400px]">
+                <h2 className="h900-normal-48px lg:w-min-[400px]">
                   {data?.results.title}
                 </h2>
-                <p className="mt-7 mb-7 h400-medium-15px text-primary-grayDark drop-shadow-1xl">
+                <p className="mt-7 mb-7 h400-medium-15px text-primary-grayDark ">
                   {data?.results.description}
                 </p>
                 <div>
@@ -103,7 +112,7 @@ export default function DetailPage() {
               </div>
 
               {/* <div className="bg-[url('/img/event.jpg')] w-4/5 bg-cover h-full md:row-span-2 md:col-span-2" /> */}
-              <div className="w-full col-start-3 col-end-6 row-start-1 row-end-3 m-auto bg-cover lg:w-auto lg:h-full">
+              <div className="w-full col-start-3 col-end-6 row-start-1 row-end-3 m-auto bg-cover lg:w-full lg:h-full">
                 <Image
                   alt="destacada"
                   width={540}
@@ -111,7 +120,10 @@ export default function DetailPage() {
                   src={'/img/event.jpg'}
                 />
               </div>
-              <button className="m-auto mb-9 lg:ml-8 bg-primary-blue w-full h-[40px] rounded-2xl h500-normal-16px text-white col-start-1 col-end-3 row-start-2 row-end-3">
+              <button
+                onClick={handleVote}
+                className="m-auto mb-9  bg-primary-blue w-full h-[40px] rounded-2xl h500-normal-16px text-white col-start-1 col-end-3 row-start-2 row-end-3"
+              >
                 Votar
               </button>
             </div>
@@ -120,7 +132,7 @@ export default function DetailPage() {
           {/* Sugerencias de busqueda del evento */}
 
           <div>
-            <div className="bg-primary-grayLighter pt-[25px] px-[60px] max-w-[950px] min-h-[250px] mt-16 flex flex-col gap-6 md:m-auto md:mt-16 pb-10 text-primary-grayDark">
+            <div className="bg-primary-grayLighter pt-[25px] px-[60px] max-w-[970px] min-h-[250px] mt-16 flex flex-col gap-6 md:m-auto md:mt-16 pb-10 text-primary-grayDark">
               <h2 className="mb-3 h500-normal-24px">
                 ¡Hagámoslo más personal!
               </h2>
