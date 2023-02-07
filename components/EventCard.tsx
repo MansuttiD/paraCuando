@@ -6,7 +6,7 @@ import HeartLike from './HeartLike';
 type AppProps = {
   title: string;
   description: string;
-  id: string;
+  id: string | null;
   counter: string;
   content: string;
 };

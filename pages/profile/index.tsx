@@ -43,6 +43,7 @@ const Profile: NextPageWithLayout = () => {
           {arrCard.map((card) => (
             <EventCard
               key={card}
+              id="2"
               title="Tienda de ropa femenina ZARA"
               description="Tienda de ropa"
               content="ladygaga.com"
