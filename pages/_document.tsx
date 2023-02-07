@@ -6,12 +6,12 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <Provider store={store}>
-        <body>
+      <body>
+        <Provider store={store}>
           <Main />
           <NextScript />
-        </body>
-      </Provider>
+        </Provider>
+      </body>
     </Html>
   );
 }

@@ -6,15 +6,17 @@ import HeartLike from './HeartLike';
 type AppProps = {
   title: string;
   description: string;
-  domain: string;
+  id: string;
   counter: string;
+  content: string;
 };
 
 export default function EventCard({
   title,
   description,
-  domain,
+  id,
   counter,
+  content,
 }: AppProps) {
   const [likeHeart, setLikeHeart] = useState(false);
   const changeHeart = () => {
@@ -34,7 +36,7 @@ export default function EventCard({
 
       <div className="flex flex-col justify-between w-full h-1/2">
         <div>
-          <Link href="/detail-page/detail-page">
+          <Link href={`/detail-page/${id}`}>
             <h2 className=" w-[250px] m-auto h600-medium-20px text-primary-blackLight">
               {title}
             </h2>
@@ -45,7 +47,7 @@ export default function EventCard({
         </div>
         <div className="w-[250px] mb-7 m-auto">
           <span className="text-[#1B4DB1] block h500-medium-14px  mb-3">
-            {domain}
+            {content}
           </span>
           <span className="h500-medium-14px  flex items-center gap-3 text-[#1A1E2E]">
             <svg

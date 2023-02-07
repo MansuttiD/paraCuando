@@ -1,14 +1,26 @@
 import Image from 'next/image';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import EventCard from '../../components/EventCard';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Label from '../../components/Label';
 import NextButton from '../../components/NextButton';
+import { useMyUserInfo } from '../../lib/services/user.services';
+import { useAppDispatch } from '../../store/hooks';
+import { setUserGlobal } from '../../store/slices/user.slice';
 import { NextPageWithLayout } from '../_app';
 
 const Profile: NextPageWithLayout = () => {
-  const arrCard: number[] = [1, 2, 3, 4, 5, 6];
+  const dispatch = useAppDispatch();
+  const { data } = useMyUserInfo();
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setUserGlobal(data));
+    }
+  }, [data]);
+
+  const arrCard: string[] = ['1', '2', '3', '4', '5', '6'];
   return (
     <div>
       <section className="h-32 bg-primary-blue "></section>
@@ -33,7 +45,7 @@ const Profile: NextPageWithLayout = () => {
               key={card}
               title="Tienda de ropa femenina ZARA"
               description="Tienda de ropa"
-              domain="ladygaga.com"
+              content="ladygaga.com"
               counter="91800756"
             />
           ))}

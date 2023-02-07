@@ -1,20 +1,14 @@
 import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Events } from '../lib/interfaces/slices.interfaces';
 import ArrowButton from './ArrowButton';
 import EventCard from './EventCard';
-
-interface myobj {
-  title: string;
-  description: string;
-  domain: string;
-  counter: string;
-}
 
 interface props {
   title: string;
   description: string;
-  events: myobj[];
+  events: Events[];
 }
 
 export default function SliderCard({ title, description, events }: props) {
@@ -58,13 +52,14 @@ export default function SliderCard({ title, description, events }: props) {
             },
           }}
         >
-          {events.map((event: myobj) => (
-            <SwiperSlide key={event.domain}>
+          {events?.map((event) => (
+            <SwiperSlide key={event.id}>
               <EventCard
                 title={event.title}
                 description={event.description}
-                domain={event.domain}
-                counter={event.counter}
+                content={event.content}
+                counter={event.profile_id}
+                id={event.id}
               />
             </SwiperSlide>
           ))}

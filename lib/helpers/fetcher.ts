@@ -1,3 +1,4 @@
-import axios from 'axios';
+import instance from './axios.helper';
 
-export const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+export const fetcher = (url: string) =>
+  instance.get(url).then((res) => res.data);

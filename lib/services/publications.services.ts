@@ -10,7 +10,7 @@ const BASE_URL = publicRuntimeConfig.BASE_URL;
 
 function usePublication() {
   const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/publications`,
+    `${BASE_URL}/publications?size=20`,
     fetcher
   );
   return {
@@ -25,9 +25,9 @@ function publicationPost(data: Publication) {
   return instance.post(`${BASE_URL}/publications`, data);
 }
 
-function usePublicationId(id: string) {
+function usePublicationId(id: string | string[] | undefined) {
   const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/publications${id}`,
+    `${BASE_URL}/publications/${id}`,
     fetcher
   );
   return {

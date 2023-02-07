@@ -1,6 +1,18 @@
+import Cookies from 'js-cookie';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useAppDispatch } from '../store/hooks';
+import { setRemoveUser } from '../store/slices/user.slice';
 
 export default function MinMenu() {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    Cookies.remove('token');
+    router.push('/');
+    dispatch(setRemoveUser(null));
+  };
   return (
     <div className=" w-[250px]  min-h-[218px] rounded-[25px] px-[29px] pt-[32px] pb-[10px] shadow-[-5px_8px_31px_-8px_rgba(0,0,0,0.25)] bg-white ">
       <ul className="flex flex-col gap-[22px] mb-[23px] border-b-2 border-solid border-primary-grayDark  ">
@@ -58,7 +70,10 @@ export default function MinMenu() {
             Configuración
           </li>
         </Link>
-        <li className="flex gap-[20px] mb-10 h-[22px] items-center text-[18px] font-normal leading-leading-4 ">
+        <li
+          onClick={handleLogout}
+          className="flex gap-[20px] mb-10 h-[22px] items-center text-[18px] font-normal leading-leading-4 "
+        >
           <svg
             width="22"
             height="24"
