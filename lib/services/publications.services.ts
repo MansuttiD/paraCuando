@@ -1,11 +1,7 @@
-import getConfig from 'next/config';
 import useSMR from 'swr';
 import instance from '../helpers/axios.helper';
 import { fetcher } from '../helpers/fetcher';
 import { Publication } from '../interfaces/publication.interface';
-
-const { publicRuntimeConfig } = getConfig();
-const BASE_URL = publicRuntimeConfig.BASE_URL;
 
 function usePublication() {
   const { data, error, isLoading, mutate } = useSMR(
