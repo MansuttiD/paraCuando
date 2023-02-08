@@ -1,25 +1,13 @@
 import Image from 'next/image';
-import { ReactElement, useEffect } from 'react';
+import { ReactElement } from 'react';
 import EventCard from '../../components/EventCard';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Label from '../../components/Label';
 import NextButton from '../../components/NextButton';
-import { useMyUserInfo } from '../../lib/services/user.services';
-import { useAppDispatch } from '../../store/hooks';
-import { setUserGlobal } from '../../store/slices/user.slice';
 import { NextPageWithLayout } from '../_app';
 
 const Profile: NextPageWithLayout = () => {
-  const dispatch = useAppDispatch();
-  const { data } = useMyUserInfo();
-
-  useEffect(() => {
-    if (data) {
-      dispatch(setUserGlobal(data));
-    }
-  }, [data]);
-
   const arrCard: string[] = ['1', '2', '3', '4', '5', '6'];
   return (
     <div>

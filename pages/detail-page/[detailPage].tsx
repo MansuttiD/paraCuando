@@ -6,8 +6,8 @@ import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import SliderCard from '../../components/SliderCard';
 import {
+  publicationIdVotes,
   usePublicationId,
-  usePublicationIdVotes,
 } from '../../lib/services/publications.services';
 import { useAppSelector } from '../../store/hooks';
 
@@ -17,15 +17,15 @@ export default function DetailPage() {
   const [showMenuLabels, setShowMenuLabes] = useState(false);
   const { data } = usePublicationId(detailPage);
   const allEvents = useAppSelector((state) => state.events);
-  const vote = usePublicationIdVotes(detailPage);
 
   const handleClickMenu = () => {
     setShowMenuLabes(!showMenuLabels);
   };
 
   const handleVote = () => {
-    vote;
-    console.log(vote);
+    publicationIdVotes(detailPage)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   if (allEvents.events) {

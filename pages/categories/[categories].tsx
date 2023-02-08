@@ -3,17 +3,28 @@ import { useRouter } from 'next/router';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import SliderCard from '../../components/SliderCard';
-import { usePublicationsTypesByCategory } from '../../lib/services/category.services';
+import { usePublicationsTypes } from '../../lib/services/category.services';
+import { usePublication } from '../../lib/services/publications.services';
 
 const CategoriPage = () => {
   const router = useRouter();
   const { categories } = router.query;
-  const { data } = usePublicationsTypesByCategory(
-    categories == 'marcas' ? 1 : 2
-  );
-  console.log(data);
+  const { data } = usePublication();
 
-  if (data) {
+  const categorysList = usePublicationsTypes();
+
+  type categorytype = {
+    description: string;
+    id: string;
+    name: string;
+  };
+
+  let thisCategory: any = categorysList.data?.filter(
+    (category: categorytype) =>
+      category.name.toLocaleLowerCase().replaceAll(' ', '-') == categories
+  );
+
+  if (thisCategory) {
     return (
       <div>
         <div
@@ -29,22 +40,10 @@ const CategoriPage = () => {
                 : 'Torneos'
             }`}</h4>
             <h2 className="text-primary-yellow h900-normal-48px mb-[6px]  ">
-              {`${
-                categories == 'marcas'
-                  ? 'Marcas y tiendas'
-                  : categories == 'artistas'
-                  ? 'Artistas y Conciertos'
-                  : 'Torneos y eventos '
-              }`}
+              {`${thisCategory[0].name}`}
             </h2>
             <p className="text-white h500-normal-16px ">
-              {`${
-                categories == 'marcas'
-                  ? 'Descubre las marcas y tiendas que la gente quiere cérca'
-                  : categories == 'artistas'
-                  ? 'Descubre los Artistas y Conciertos que la gente quiere cérca'
-                  : 'Descubre los Torneos y eventos que la gente quiere cérca'
-              }`}
+              {`${thisCategory[0].description}`}
             </p>
           </div>
         </div>
@@ -54,25 +53,26 @@ const CategoriPage = () => {
               <InputSearch />
             </div>
             <div className="flex flex-wrap gap-[9px] justify-center ">
-              <Link href="/categories/marcas">
-                <Label category="Marcas y tiendas" />
-              </Link>
-              <Link href="/categories/artistas">
-                <Label category="Artistas y conciertos" />
-              </Link>
-              <Link href="/categories/torneos">
-                <Label category="Torneos" />
-              </Link>
+              {categorysList.data?.map((list) => (
+                <Link
+                  key={list.id}
+                  href={`/categories/${list.name
+                    .toLowerCase()
+                    .replaceAll(' ', '-')}`}
+                >
+                  <Label category={list.name} />
+                </Link>
+              ))}
             </div>
           </div>
           <div>
             <SliderCard
-              events={data}
+              events={data.results.results}
               title="Populares en Queretaro"
               description="Lo que las personas piden mas"
             />
             <SliderCard
-              events={data}
+              events={data.results.results}
               title="Sugerencias para ti"
               description="Publicaciones que podrias colaborar"
             />
@@ -96,7 +96,7 @@ const CategoriPage = () => {
               </a>
             </div>
             <SliderCard
-              events={data}
+              events={data.results.results}
               title="Recientes"
               description="Las personas ultimamente estan hablando de esto"
             />

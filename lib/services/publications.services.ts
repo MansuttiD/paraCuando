@@ -1,4 +1,3 @@
-import axios from 'axios';
 import getConfig from 'next/config';
 import useSMR from 'swr';
 import instance from '../helpers/axios.helper';
@@ -10,7 +9,7 @@ const BASE_URL = publicRuntimeConfig.BASE_URL;
 
 function usePublication() {
   const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/publications?size=20`,
+    `/publications?size=20`,
     fetcher
   );
   return {
@@ -22,12 +21,12 @@ function usePublication() {
 }
 
 function publicationPost(data: Publication) {
-  return instance.post(`${BASE_URL}/publications`, data);
+  return instance.post(`/publications`, data);
 }
 
 function usePublicationId(id: string | string[] | undefined) {
   const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/publications/${id}`,
+    `/publications/${id}`,
     fetcher
   );
   return {
@@ -38,27 +37,18 @@ function usePublicationId(id: string | string[] | undefined) {
   };
 }
 
-function usePublicationIdVotes(id: string | string[] | undefined) {
-  const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/publications/${id}/votes`,
-    fetcher
-  );
-  return {
-    data,
-    error,
-    isLoading,
-    mutate,
-  };
+function publicationIdVotes(id: string | string[] | undefined) {
+  return instance.post(`/publications/${id}/votes`);
 }
 
 function usePublicationDeleted(id: string) {
-  return axios.delete(`${BASE_URL}/publications${id}`);
+  return instance.delete(`/publications${id}`);
 }
 
 export {
   usePublication,
   publicationPost,
   usePublicationId,
-  usePublicationIdVotes,
+  publicationIdVotes,
   usePublicationDeleted,
 };

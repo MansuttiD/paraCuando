@@ -1,9 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePublicationsTypes } from '../lib/services/category.services';
 import InputSearch from './InputSearch';
 import Label from './Label';
 
 const Footer = () => {
+  const categorysList = usePublicationsTypes();
+
   return (
     <div className="bg-[url('/img/bg-footer.jpg')] bg-no-repeat bg-cover h-[438px] flex items-center flex-col justify-center gap-5">
       <Image
@@ -16,15 +19,14 @@ const Footer = () => {
         <InputSearch />
       </div>
       <div className="flex gap-2 flex-wrap justify-center ">
-        <Link href="/categories/marcas">
-          <Label category="Marcas y tiendas" />
-        </Link>
-        <Link href="/categories/artistas">
-          <Label category="Artistas y conciertos" />
-        </Link>
-        <Link href="/categories/torneos">
-          <Label category="Torneos" />
-        </Link>
+        {categorysList.data?.map((list) => (
+          <Link
+            key={list.id}
+            href={`/categories/${list.name.toLowerCase().replaceAll(' ', '-')}`}
+          >
+            <Label category={list.name} />
+          </Link>
+        ))}
       </div>
     </div>
   );

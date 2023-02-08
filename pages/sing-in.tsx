@@ -21,7 +21,8 @@ const Login: NextPageWithLayout = () => {
     login(data)
       .then((res) => {
         Cookies.set('token', res.data.token[0].public);
-        router.push('/profile');
+        // router.push('/profile');
+        window.location.href = '/profile';
       })
       .catch((err) => console.log(err));
   };

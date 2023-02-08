@@ -1,12 +1,15 @@
 import Link from 'next/link';
-import { useState } from 'react';
-import { useAppSelector } from '../store/hooks';
+import { useEffect, useState } from 'react';
+import { useMyUserInfo } from '../lib/services/user.services';
 import MinMenu from './MinMenu';
 
 export default function Header() {
   const [menuActive, setMenuActive] = useState<boolean>(false);
 
-  let myUser = useAppSelector((state) => state.user);
+  const { data } = useMyUserInfo();
+  useEffect(() => {
+    data;
+  }, []);
 
   const handleMenu = () => {
     setMenuActive(!menuActive);
@@ -52,7 +55,7 @@ export default function Header() {
           <Link href="/post-publication">
             <li
               className={`text-primary-blue gap-3 text-[12px] items-center min-w-[125px] ${
-                myUser.user ? 'hidden lg:flex' : 'flex'
+                data ? 'hidden lg:flex' : 'flex'
               }`}
             >
               <svg
@@ -72,7 +75,7 @@ export default function Header() {
           </Link>
           <li
             className={`gap-3 items-center ${
-              myUser.user ? 'hidden lg:flex' : 'hidden'
+              data ? 'hidden lg:flex' : 'hidden'
             }`}
           >
             <svg
@@ -93,11 +96,7 @@ export default function Header() {
             <Link href="/profile">Mis Votos</Link>
           </li>
 
-          <ul
-            className={`flex gap-[21px] font-black ${
-              myUser.user ? 'hidden' : ''
-            }`}
-          >
+          <ul className={`flex gap-[21px] font-black ${data ? 'hidden' : ''}`}>
             <li>
               <Link href="/login">Login</Link>
             </li>
@@ -108,7 +107,7 @@ export default function Header() {
           <div className="flex gap-4 justify-center items-center sm:pr-8">
             <div
               className={`w-[20px] h-[17px] flex justify-center items-center ${
-                !myUser.user ? 'hidden' : ''
+                !data ? 'hidden' : ''
               }`}
             >
               <svg
@@ -142,8 +141,8 @@ export default function Header() {
                 />
               </svg>
             </div>
-            <div className={`${!myUser.user ? 'hidden' : ''}`}>
-              {myUser.user?.results.email}
+            <div className={`${!data ? 'hidden' : ''}`}>
+              {data?.results.email}
             </div>
             <svg
               onClick={handleMenu}
@@ -152,7 +151,7 @@ export default function Header() {
               viewBox="0 0 10 6"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={`${!myUser.user ? 'hidden' : ''}`}
+              className={`${!data ? 'hidden' : ''}`}
             >
               <path
                 d="M10 1L5 6L0 1L0.8875 0.1125L5 4.225L9.1125 0.1125L10 1Z"
