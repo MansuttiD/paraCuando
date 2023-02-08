@@ -8,7 +8,7 @@ import { setEvents } from '../store/slices/events.slice';
 
 const Index = () => {
   const [eventsInfo, setEventsInfo] = useState();
-  const { data, error, isLoading } = usePublication();
+  const { data } = usePublication();
   const dispatch = useAppDispatch();
   dispatch(setEvents(data?.results.results));
 

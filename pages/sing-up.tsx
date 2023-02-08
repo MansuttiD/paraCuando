@@ -20,7 +20,7 @@ const Signup: NextPageWithLayout = () => {
 
   const submit = (data: Inputs) => {
     userSignup(data)
-      .then((res) => {
+      .then(() => {
         router.push('/login');
       })
       .catch((err) => console.log(err));

@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import type { ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 import { login } from '../lib/services/autenticate.services';
@@ -14,8 +13,6 @@ type Inputs = {
 
 const Login: NextPageWithLayout = () => {
   const { handleSubmit, register } = useForm<Inputs>();
-
-  const router = useRouter();
 
   const submit = (data: { email: string; password: string }) => {
     login(data)

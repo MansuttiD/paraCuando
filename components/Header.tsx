@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useMyUserInfo } from '../lib/services/user.services';
 import MinMenu from './MinMenu';
 
@@ -7,9 +7,6 @@ export default function Header() {
   const [menuActive, setMenuActive] = useState<boolean>(false);
 
   const { data } = useMyUserInfo();
-  useEffect(() => {
-    data;
-  }, []);
 
   const handleMenu = () => {
     setMenuActive(!menuActive);
