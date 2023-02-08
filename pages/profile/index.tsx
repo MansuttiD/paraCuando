@@ -13,12 +13,10 @@ const Profile: NextPageWithLayout = () => {
   const { data } = usePublication();
   const myUser = useMyUserInfo();
 
-  let myPublications: any[] = data.results.results.filter(
+  let myPublications: any[] = data?.results.results.filter(
     (publication: any) =>
       publication.profile_id == myUser.data.results.profile[0].id
   );
-
-  console.log(myPublications);
 
   return (
     <div>
