@@ -3,7 +3,6 @@ import Label from './Label';
 
 export default function LabelBox() {
   const { data } = useAllMyTags();
-  console.log(data);
 
   return (
     <div className="bg-primary-grayLighter pt-[25px] px-[60px] max-w-[950px] min-h-[250px] mt-16 flex flex-col gap-6 md:m-auto md:mt-16 pb-10 text-primary-grayDark">

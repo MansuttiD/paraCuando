@@ -5,10 +5,21 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Label from '../../components/Label';
 import NextButton from '../../components/NextButton';
+import { usePublication } from '../../lib/services/publications.services';
+import { useMyUserInfo } from '../../lib/services/user.services';
 import { NextPageWithLayout } from '../_app';
 
 const Profile: NextPageWithLayout = () => {
-  const arrCard: string[] = ['1', '2', '3', '4', '5', '6'];
+  const { data } = usePublication();
+  const myUser = useMyUserInfo();
+
+  let myPublications: any[] = data.results.results.filter(
+    (publication: any) =>
+      publication.profile_id == myUser.data.results.profile[0].id
+  );
+
+  console.log(myPublications);
+
   return (
     <div>
       <section className="h-32 bg-primary-blue "></section>
@@ -28,13 +39,13 @@ const Profile: NextPageWithLayout = () => {
           </div>
         </div>
         <div className="flex gap-10 mx-auto mb-14 flex-wrap md:gap-6 justify-center  ">
-          {arrCard.map((card) => (
+          {myPublications?.map((publication) => (
             <EventCard
-              key={card}
-              id="2"
-              title="Tienda de ropa femenina ZARA"
-              description="Tienda de ropa"
-              content="ladygaga.com"
+              key={publication.id}
+              id={publication.id}
+              title={publication.title}
+              description={publication.description}
+              content={publication.content}
               counter="91800756"
             />
           ))}

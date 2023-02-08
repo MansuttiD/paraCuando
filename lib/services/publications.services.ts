@@ -37,7 +37,7 @@ function usePublicationId(id: string | string[] | undefined) {
   };
 }
 
-function publicationIdVotes(id: string | string[] | undefined) {
+function publicationIdVotes(id: string | string[] | undefined | null) {
   return instance.post(`/publications/${id}/votes`);
 }
 

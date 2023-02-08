@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
+import LabelBox from '../../components/LabelBox';
 import SliderCard from '../../components/SliderCard';
+import { usePublicationsTypes } from '../../lib/services/category.services';
 import {
   publicationIdVotes,
   usePublicationId,
@@ -17,6 +19,7 @@ export default function DetailPage() {
   const [showMenuLabels, setShowMenuLabes] = useState(false);
   const { data } = usePublicationId(detailPage);
   const allEvents = useAppSelector((state) => state.events);
+  const categorysList = usePublicationsTypes();
 
   const handleClickMenu = () => {
     setShowMenuLabes(!showMenuLabels);
@@ -59,15 +62,16 @@ export default function DetailPage() {
                   : 'hidden'
               } md:flex md:flex-row md:static md:bg-transparent md:p-0 md:gap-4`}
             >
-              <Link href="/categories/marcas">
-                <Label category="Marcas y tiendas" />
-              </Link>
-              <Link href="/categories/artistas">
-                <Label category="Artistas y conciertos" />
-              </Link>
-              <Link href="/categories/torneos">
-                <Label category="Torneos" />
-              </Link>
+              {categorysList.data?.map((list) => (
+                <Link
+                  key={list.id}
+                  href={`/categories/${list.name
+                    .toLowerCase()
+                    .replaceAll(' ', '-')}`}
+                >
+                  <Label category={list.name} />
+                </Link>
+              ))}
             </div>
           </div>
           <div className="w-[314px] lg:w-[373px]">
@@ -132,25 +136,7 @@ export default function DetailPage() {
           {/* Sugerencias de busqueda del evento */}
 
           <div>
-            <div className="bg-primary-grayLighter pt-[25px] px-[60px] max-w-[970px] min-h-[250px] mt-16 flex flex-col gap-6 md:m-auto md:mt-16 pb-10 text-primary-grayDark">
-              <h2 className="mb-3 h500-normal-24px">
-                ¡Hagámoslo más personal!
-              </h2>
-              <h3 className="h400-normal-16px">
-                Selecciona tus interes para brindarte sugerencia de acuerdo a
-                tus gustos
-              </h3>
-              <div className="flex overflow-x-scroll w-full gap-4  md:overflow-x-auto ">
-                <Label category="Restaurantes" />
-                <Label category="Tienda de ropa" />
-                <Label category="Rock" />
-                <Label category="Restaurantes" />
-                <Label category="Restaurantes" />
-              </div>
-              <a className="h400-normal-16px text-primary-blue ">
-                Ver todos los intereses
-              </a>
-            </div>
+            <LabelBox />
           </div>
 
           {/* Slider de mas eventos */}
