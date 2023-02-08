@@ -37,7 +37,9 @@ const CategoriPage = () => {
         .replaceAll(' ', '-') == categories
   );
 
-  if (thisCategory) {
+  console.log(data.results);
+
+  if (thisCategory && publicationsByType) {
     return (
       <div>
         <div
