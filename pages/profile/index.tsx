@@ -15,7 +15,7 @@ const Profile: NextPageWithLayout = () => {
 
   let myPublications: any[] = data?.results.results.filter(
     (publication: any) =>
-      publication.profile_id == myUser.data.results.profile[0].id
+      publication.profile_id == myUser.data?.results.profile[0].id
   );
 
   return (

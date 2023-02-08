@@ -8,7 +8,7 @@ import { setEvents } from '../store/slices/events.slice';
 
 const Index = () => {
   const [eventsInfo, setEventsInfo] = useState();
-  const { data } = usePublication();
+  const { data, isLoading } = usePublication();
   const dispatch = useAppDispatch();
   dispatch(setEvents(data?.results.results));
 
@@ -18,31 +18,29 @@ const Index = () => {
     }
   }, [data]);
 
-  if (eventsInfo) {
-    return (
-      <div>
-        <Hero />
-        <div className="max-w-[1240px] m-auto ">
-          <SliderCard
-            events={eventsInfo}
-            title="Populares en Queretaro"
-            description="Lo que las personas piden mas"
-          />
-          <SliderCard
-            events={eventsInfo}
-            title="Sugerencias para ti"
-            description="Publicaciones que podrias colaborar"
-          />
-          <LabelBox />
-          <SliderCard
-            events={eventsInfo}
-            title="Recientes"
-            description="Las personas ultimamente estan hablando de esto"
-          />
-        </div>
+  return (
+    <div>
+      <Hero />
+      <div className="max-w-[1240px] m-auto ">
+        <SliderCard
+          events={eventsInfo}
+          title="Populares en Queretaro"
+          description="Lo que las personas piden mas"
+        />
+        <SliderCard
+          events={eventsInfo}
+          title="Sugerencias para ti"
+          description="Publicaciones que podrias colaborar"
+        />
+        <LabelBox />
+        <SliderCard
+          events={eventsInfo}
+          title="Recientes"
+          description="Las personas ultimamente estan hablando de esto"
+        />
       </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default Index;

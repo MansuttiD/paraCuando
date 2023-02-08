@@ -8,6 +8,8 @@ export default function Header() {
 
   const { data } = useMyUserInfo();
 
+  console.log(data);
+
   const handleMenu = () => {
     setMenuActive(!menuActive);
   };
@@ -101,7 +103,10 @@ export default function Header() {
               <Link href="/sing-up">Sing Up</Link>
             </li>
           </ul>
-          <div className="flex gap-4 justify-center items-center sm:pr-8">
+          <div
+            onClick={handleMenu}
+            className="flex gap-4 justify-center items-center sm:pr-8 cursor-pointer "
+          >
             <div
               className={`w-[20px] h-[17px] flex justify-center items-center ${
                 !data ? 'hidden' : ''
@@ -142,7 +147,6 @@ export default function Header() {
               {data?.results.email}
             </div>
             <svg
-              onClick={handleMenu}
               width="10"
               height="6"
               viewBox="0 0 10 6"

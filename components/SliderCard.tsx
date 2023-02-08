@@ -8,7 +8,7 @@ import EventCard from './EventCard';
 interface props {
   title: string;
   description: string;
-  events: Events[] | null;
+  events: Events[] | null | undefined;
 }
 
 export default function SliderCard({ title, description, events }: props) {
