@@ -8,7 +8,7 @@ import EventCard from './EventCard';
 interface props {
   title: string;
   description: string;
-  events: Events[] | null | undefined;
+  events: Events[] | null | undefined | any;
 }
 
 export default function SliderCard({ title, description, events }: props) {
@@ -52,13 +52,14 @@ export default function SliderCard({ title, description, events }: props) {
             },
           }}
         >
-          {events?.map((event) => (
+          {events?.map((event: any) => (
             <SwiperSlide key={event.id}>
               <EventCard
+                img={event.image_url}
                 title={event.title}
                 description={event.description}
                 content={event.content}
-                counter={event.profile_id}
+                counter={event.votes_count}
                 id={event.id}
               />
             </SwiperSlide>

@@ -8,8 +8,6 @@ export default function Header() {
 
   const { data } = useMyUserInfo();
 
-  console.log(data);
-
   const handleMenu = () => {
     setMenuActive(!menuActive);
   };

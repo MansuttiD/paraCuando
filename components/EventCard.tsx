@@ -10,6 +10,7 @@ type AppProps = {
   id: string | null;
   counter: string;
   content: string;
+  img: string;
 };
 
 export default function EventCard({
@@ -18,6 +19,7 @@ export default function EventCard({
   id,
   counter,
   content,
+  img,
 }: AppProps) {
   const [likeHeart, setLikeHeart] = useState(false);
 

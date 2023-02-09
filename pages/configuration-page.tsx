@@ -2,20 +2,20 @@ import { ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import { useMyUserInfo } from '../lib/services/user.services';
+import { useMyUser, useMyUserInfo } from '../lib/services/user.services';
 import { NextPageWithLayout } from './_app';
 
 const ConfigurationPage: NextPageWithLayout = () => {
   const { handleSubmit, register, reset } = useForm<any>();
   const { data } = useMyUserInfo();
+  const myId = data?.results.id;
+  const myUser = useMyUser(myId);
 
   const defaultValue: any = {
-    firstName: data?.results.username,
-    lastName: data?.results.lastname,
+    firstName: myUser.data?.results.first_name,
+    lastName: myUser.data?.results.last_name,
     image_url: data?.results.profile[0].image_url,
   };
-
-  reset(defaultValue);
 
   const submit = (obj: any) => {
     reset(defaultValue);
@@ -67,7 +67,7 @@ const ConfigurationPage: NextPageWithLayout = () => {
                 className="md:w-[620px] w-[300px] rounded-xl h-12 border-2 border-[#7D7D7D] outline-none p-2"
                 type="text"
                 id="name"
-                value={data?.results.username || ''}
+                value={myUser.data?.results.first_name || ''}
                 {...register('firstName', { required: true })}
               />
             </div>
@@ -82,7 +82,7 @@ const ConfigurationPage: NextPageWithLayout = () => {
                 className="md:w-[620px] w-[300px] rounded-xl h-12 border-2 border-[#7D7D7D] outline-none p-2"
                 type="text"
                 id="last"
-                value={data?.results.lastname || ''}
+                value={myUser.data?.results.last_name || ''}
                 {...register('lastName', { required: true })}
               />
             </div>

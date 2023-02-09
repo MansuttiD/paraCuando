@@ -19,7 +19,20 @@ function useMyUserInfo() {
   };
 }
 
-function useMyVotes(id: string) {
+function useMyUser(id: any) {
+  const { data, error, isLoading, mutate } = useSMR(
+    `${BASE_URL}/users/${id}`,
+    fetcher
+  );
+  return {
+    data,
+    error,
+    isLoading,
+    mutate,
+  };
+}
+
+function useMyVotes(id: string | null | undefined) {
   const { data, error, isLoading, mutate } = useSMR(
     `${BASE_URL}/users/${id}/votes`,
     fetcher
@@ -59,4 +72,10 @@ function updateMyUser(
   return axios.put(`${BASE_URL}/users/${id}`, data);
 }
 
-export { useMyUserInfo, useMyVotes, useMyPublications, updateMyUser };
+export {
+  useMyUserInfo,
+  useMyVotes,
+  useMyPublications,
+  updateMyUser,
+  useMyUser,
+};
