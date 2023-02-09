@@ -63,7 +63,7 @@ const Profile: NextPageWithLayout = () => {
               description={publication.description}
               content={publication.content}
               counter={publication.votes_count}
-              img={publication.Publication.image_url}
+              img="image"
             />
           ))}
         </div>
@@ -80,7 +80,7 @@ const Profile: NextPageWithLayout = () => {
               description={publication.Publication.description}
               content={publication.Publication.content}
               counter={publication.Publication.votes_count}
-              img={publication.Publication.image_url}
+              img="image"
             />
           ))}
         </div>
