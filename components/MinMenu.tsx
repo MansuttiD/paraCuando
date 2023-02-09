@@ -7,7 +7,8 @@ export default function MinMenu() {
 
   const handleLogout = () => {
     Cookies.remove('token');
-    router.push('/');
+    // router.push('/');
+    window.location.href = '/';
   };
   return (
     <div className=" w-[250px]  min-h-[218px] rounded-[25px] px-[29px] pt-[32px] pb-[10px] shadow-[-5px_8px_31px_-8px_rgba(0,0,0,0.25)] bg-white ">
@@ -68,7 +69,7 @@ export default function MinMenu() {
         </Link>
         <li
           onClick={handleLogout}
-          className="flex gap-[20px] mb-10 h-[22px] items-center text-[18px] font-normal leading-leading-4 "
+          className="flex gap-[20px] mb-10 h-[22px] items-center text-[18px] font-normal leading-leading-4 cursor-pointer "
         >
           <svg
             width="22"
