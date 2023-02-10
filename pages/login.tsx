@@ -1,8 +1,10 @@
 import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
-import type { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import Swal from 'sweetalert2';
 import { login } from '../lib/services/autenticate.services';
 import type { NextPageWithLayout } from './_app';
 
@@ -21,7 +23,26 @@ const Login: NextPageWithLayout = () => {
         // router.push('/profile');
         window.location.href = '/profile';
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Swal.fire({
+          position: 'top',
+          toast: true,
+          icon: 'error',
+          title: 'Ha ocurrido un error, sus datos no han sido validados',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+  };
+
+  const [passwordInput, setPasswordInput] = useState('password');
+
+  const handlePasswordInput = () => {
+    setPasswordInput('password');
+  };
+
+  const handlePasswordText = () => {
+    setPasswordInput('text');
   };
 
   return (
@@ -52,7 +73,7 @@ const Login: NextPageWithLayout = () => {
           </p>
           <form
             onSubmit={handleSubmit(submit)}
-            className="flex flex-col gap-2 w-[374px] lg:w-[487px]  "
+            className="flex flex-col gap-2 w-[374px] lg:w-[487px]  relative"
           >
             <div className="flex flex-col gap-1 ">
               <label
@@ -69,20 +90,30 @@ const Login: NextPageWithLayout = () => {
                 {...register('email', { required: true })}
               />
             </div>
-            <div className="flex flex-col gap-1 ">
+            <div className="flex flex-col gap-1">
               <label
                 htmlFor="password"
                 className="h400-normal-16px font-semibold "
               >
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                autoComplete="off"
-                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
-                {...register('password', { required: true })}
-              />
+              <div className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 flex justify-between items-center">
+                <input
+                  type={passwordInput}
+                  id="password"
+                  autoComplete="off"
+                  className="outline-none w-4/5"
+                  {...register('password', { required: true })}
+                />
+                <AiFillEye
+                  onClick={handlePasswordText}
+                  className={`${passwordInput == 'text' ? 'hidden' : ''}`}
+                />
+                <AiFillEyeInvisible
+                  onClick={handlePasswordInput}
+                  className={`${passwordInput == 'password' ? 'hidden' : ''}`}
+                />
+              </div>
             </div>
             <button className="bg-primary-blue rounded-[5px] h-[45.26px] text-white h400-normal-16px font-semibold ">
               Log in

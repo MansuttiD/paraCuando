@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { publicationIdVotes } from '../lib/services/publications.services';
 import HeartDisLike from './HeartDisLike';
 import HeartLike from './HeartLike';
@@ -25,16 +26,42 @@ export default function EventCard({
 
   const handleVote = () => {
     publicationIdVotes(id)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        Swal.fire({
+          position: 'top',
+          toast: true,
+          icon: 'success',
+          title: 'Gracias por tu voto',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: 'top',
+          toast: true,
+          icon: 'error',
+          title: 'El voto no ha sido registrado',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
   };
 
+  const [textLegth, setTextLegth] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (title.length > 23) {
+      setTextLegth(true);
+    }
+  }, []);
+
   return (
-    <div className="w-[300px] h-[450px] ml-[1px] rounded-[20px] drop-shadow-1xl bg-[#FFFFFF] sm:ml-1 ">
-      <div className="w-full bg-[url('/img/tienda.png')] rounded-t-lg h-1/2 mb-[15px] ">
+    <div className="w-[300px] h-[450px] ml-[1px] rounded-[20px] drop-shadow-1xl bg-[#FFFFFF] sm:ml-1 overflow-hidden">
+      <div className="w-full bg-[url('/img/tienda.png')] hover:scale-[1.01] duration-[0.5s] rounded-t-lg h-1/2 mb-[15px] ">
         <button
           onClick={handleVote}
-          className="w-[50px] h-[50px] absolute flex justify-center items-center bg-primary-grayLight rounded-full border-2 border-[#FFFFFF] top-48 right-2"
+          className="w-[50px] h-[50px] absolute flex justify-center items-center bg-primary-grayLight rounded-full border-2 border-[#FFFFFF] top-48 right-2 transition-all duration-300 hover:scale-110"
         >
           {likeHeart ? <HeartLike /> : <HeartDisLike />}
         </button>
@@ -43,12 +70,22 @@ export default function EventCard({
       <Link href={`/detail-page/${id}`}>
         <div className="flex flex-col justify-between w-full h-1/2">
           <div>
-            <h2 className=" w-[250px] m-auto h600-medium-20px text-primary-blackLight">
+            <h2 className=" w-[250px] m-auto h600-medium-20px text-primary-blackLight whitespace-nowrap overflow-x-hidden relative">
               {title}
+              <span
+                className={`${
+                  textLegth ? ' ' : 'hidden'
+                } absolute right-0 bg-white px-[2px]`}
+              >
+                ...
+              </span>
             </h2>
-            <p className="w-[250px] m-auto text-primary-grayDark h400-medium-15px  mt-2">
-              {description}
-            </p>
+            <div className="max-w-[300px] h-[120px] overflow-hidden relative">
+              <p className="w-[250px] m-auto text-primary-grayDark h400-medium-15px mt-2">
+                {description}
+              </p>
+              <div className="h-[44px] absolute bottom-0 bg-gradient-to-b from-[#ffffff6c] to-[#ffffff] w-full z-[10000]"></div>
+            </div>
           </div>
           <div className="w-[250px] mb-7 m-auto">
             <span className="text-[#1B4DB1] block h500-medium-14px  mb-3">

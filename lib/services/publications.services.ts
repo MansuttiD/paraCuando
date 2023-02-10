@@ -5,7 +5,7 @@ import { Publication } from '../interfaces/publication.interface';
 
 function usePublication() {
   const { data, error, isLoading, mutate } = useSMR(
-    `/publications?size=20`,
+    `/publications?size=40`,
     fetcher
   );
   return {

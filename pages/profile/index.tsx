@@ -29,7 +29,7 @@ const Profile: NextPageWithLayout = () => {
   };
 
   return (
-    <div>
+    <div className="sizeConfig">
       <section className="h-32 bg-primary-blue "></section>
       <section className="max-w-[1240px] m-auto ">
         <div className="flex flex-col justify-center items-center translate-y-[-36%] gap-7 ">

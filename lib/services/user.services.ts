@@ -9,7 +9,11 @@ const BASE_URL = publicRuntimeConfig.BASE_URL;
 function useMyUserInfo() {
   const { data, error, isLoading, mutate } = useSMR(
     `${BASE_URL}/users/user-info`,
-    fetcher
+    fetcher,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+    }
   );
   return {
     data,
@@ -22,7 +26,11 @@ function useMyUserInfo() {
 function useMyUser(id: any) {
   const { data, error, isLoading, mutate } = useSMR(
     `${BASE_URL}/users/${id}`,
-    fetcher
+    fetcher,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+    }
   );
   return {
     data,
