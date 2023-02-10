@@ -1,15 +1,24 @@
-import { ReactElement } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import { useMyUser, useMyUserInfo } from '../lib/services/user.services';
+import {
+  updateMyUser,
+  useMyUser,
+  useMyUserInfo,
+} from '../lib/services/user.services';
 import { NextPageWithLayout } from './_app';
 
 const ConfigurationPage: NextPageWithLayout = () => {
-  const { handleSubmit, register, reset } = useForm<any>();
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm<any>();
+
   const { data } = useMyUserInfo();
   const myId = data?.results.id;
   const myUser = useMyUser(myId);
+  const [file, setFile] = useState<any>(null);
 
   const defaultValue: any = {
     firstName: myUser.data?.results.first_name,
@@ -18,7 +27,15 @@ const ConfigurationPage: NextPageWithLayout = () => {
   };
 
   const submit = (obj: any) => {
-    reset(defaultValue);
+    updateMyUser(obj, myId).then((res) => {
+      reset(defaultValue);
+      console.log(res);
+    });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFile(e.target.files?.[0]);
+    console.log(e.target.files?.[0]);
   };
 
   return (
@@ -36,12 +53,20 @@ const ConfigurationPage: NextPageWithLayout = () => {
           <span className=" h400-normal-16px text-primary-blackLight">
             Agrega una foto para tu perfil
           </span>
-          <div className="w-[177px] h-[208px] mt-5 bg-primary-grayLight flex items-center justify-center">
+          <div
+            style={{
+              backgroundImage: `url(${file ? URL.createObjectURL(file) : ''})`,
+            }}
+            className={`w-[177px] h-[208px] mt-5 ${
+              !file ? 'bg-primary-grayLight' : ''
+            } flex items-center justify-center  `}
+          >
             <input
               className="file:hidden file:apperence-none file:invisible file:opacity-0 hidden "
               type="file"
               id="perfilPicture"
-              value={`${data?.results.profile[0].image_url || ''}`}
+              accept="image/*"
+              onSubmit={handleChange}
               {...register('image_url')}
             />
             <label
@@ -59,14 +84,14 @@ const ConfigurationPage: NextPageWithLayout = () => {
             <div className="relative flex flex-col p-3">
               <label
                 className="absolute top-0 px-2 bg-white left-8"
-                htmlFor="name"
+                htmlFor="first"
               >
                 First Name
               </label>
               <input
                 className="md:w-[620px] w-[300px] rounded-xl h-12 border-2 border-[#7D7D7D] outline-none p-2"
                 type="text"
-                id="name"
+                id="first"
                 value={myUser.data?.results.first_name || ''}
                 {...register('firstName', { required: true })}
               />
@@ -90,16 +115,6 @@ const ConfigurationPage: NextPageWithLayout = () => {
         </div>
       </form>
     </div>
-  );
-};
-
-ConfigurationPage.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <>
-      <Header />
-      {page}
-      <Footer style="hidden" />
-    </>
   );
 };
 

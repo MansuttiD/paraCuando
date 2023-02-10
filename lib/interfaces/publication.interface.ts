@@ -1,5 +1,5 @@
 export interface Publication {
-  publication_type_id: string;
+  idPublicationType: string;
   title: string;
   description: string;
   urlShare: string;

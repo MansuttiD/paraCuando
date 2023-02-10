@@ -10,7 +10,7 @@ export default function LabelBox() {
       <h3 className="h400-normal-16px">
         Selecciona tus interes para brindarte sugerencia de acuerdo a tus gustos
       </h3>
-      <div className="flex w-full gap-4 overflow-x-scroll h-[50px] md:overflow-x-auto  scrollbar-thin scrollbar-thumb-primary-gray scrollbar-track-primary-grayLighter scrollbar-track-rounded-lg scrollbar-thumb-rounded-md  scrollbar-h-1">
+      <div className="flex scroll w-full gap-4 overflow-x-scroll h-[50px] md:overflow-x-auto  scrollbar-thin scrollbar-thumb-primary-gray scrollbar-track-primary-grayLighter scrollbar-track-rounded-lg scrollbar-thumb-rounded-md  scrollbar-h-1">
         {data?.map((tag) => (
           <Label key={tag.id} category={tag.name} />
         ))}

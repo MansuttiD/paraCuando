@@ -1,6 +1,6 @@
-import axios from 'axios';
 import getConfig from 'next/config';
 import useSMR from 'swr';
+import instance from '../helpers/axios.helper';
 import { fetcher } from '../helpers/fetcher';
 
 const { publicRuntimeConfig } = getConfig();
@@ -9,7 +9,11 @@ const BASE_URL = publicRuntimeConfig.BASE_URL;
 function useMyUserInfo() {
   const { data, error, isLoading, mutate } = useSMR(
     `${BASE_URL}/users/user-info`,
-    fetcher
+    fetcher,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+    }
   );
   return {
     data,
@@ -22,7 +26,11 @@ function useMyUserInfo() {
 function useMyUser(id: any) {
   const { data, error, isLoading, mutate } = useSMR(
     `${BASE_URL}/users/${id}`,
-    fetcher
+    fetcher,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+    }
   );
   return {
     data,
@@ -69,7 +77,7 @@ function updateMyUser(
   },
   id: string
 ) {
-  return axios.put(`${BASE_URL}/users/${id}`, data);
+  return instance.put(`${BASE_URL}/users/${id}`, data);
 }
 
 export {

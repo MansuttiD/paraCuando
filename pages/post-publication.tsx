@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -10,14 +11,34 @@ import { useAllMyTags } from '../lib/services/tags.services';
 import type { NextPageWithLayout } from './_app';
 
 const PostPublication: NextPageWithLayout = () => {
+  const router = useRouter();
+
+  const defaulValues = {
+    idPublicationType: '',
+    title: '',
+    description: '',
+    urlShare: '',
+    tags: '',
+    exampleRequired: '',
+  };
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Publication>();
 
   const onSubmit: SubmitHandler<Publication> = (data) => {
-    publicationPost(data).then((res) => console.log(res));
+    publicationPost(data)
+      .then((res) => {
+        reset(defaulValues);
+        router.push('/profile');
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const [formPublication, setFormPublication] = useState(false);
@@ -28,8 +49,16 @@ const PostPublication: NextPageWithLayout = () => {
     setFormPublication(!formPublication);
   };
 
+  const handleNext = (e: any) => {
+    e.preventDefault();
+    setFormPublication(!formPublication);
+  };
+
   return (
-    <section className="flex flex-col lg:flex-row min-h-screen ">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col lg:flex-row min-h-screen "
+    >
       <aside className="bg-primary-blue flex flex-col justify-center items-center p-[1.5rem] lg:w-[20%] lg:justify-start">
         <div className="flex flex-col lg:m-auto">
           <Link href="/">
@@ -233,10 +262,7 @@ const PostPublication: NextPageWithLayout = () => {
           </span>
         </div>
         <div className="flex flex-col gap-5  items-center">
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="w-full lg:px-[4.5rem]"
-          >
+          <div className="w-full lg:px-[4.5rem]">
             <div className="mb-6 border rounded-[11px] border-primary-grayDark border-solid lg:w-full overflow-hidden">
               <label
                 className="absolute -translate-y-3 bg-white  translate-x-5 pl-1 pr-4"
@@ -269,7 +295,7 @@ const PostPublication: NextPageWithLayout = () => {
                 <select
                   className="h-[51px] outline-none rounded-lg border border-primary-grayDark md:min-w-[300px] lg:w-full"
                   id="category"
-                  {...register('publication_type_id')}
+                  {...register('idPublicationType')}
                 >
                   {publicationsTypes?.map((type) => (
                     <option key={type.id} value={type.id}>
@@ -288,6 +314,7 @@ const PostPublication: NextPageWithLayout = () => {
                 <textarea
                   className="w-full h-[115.98px] outline-none p-2"
                   id="description"
+                  maxLength={900}
                   {...register('description', { required: true })}
                 ></textarea>
               </div>
@@ -308,13 +335,14 @@ const PostPublication: NextPageWithLayout = () => {
               </div>
             </div>
             <div className="flex place-content-center">
-              <NextButton
-                set={setFormPublication}
-                state={formPublication}
-                action="siguiente"
-              />
+              <button
+                onClick={handleNext}
+                className="w-[124px]  h-12 p-[18px] h500-normal-16px text-white flex justify-center items-center bg-primary-blue rounded-[31px] font-semibold "
+              >
+                Siguiente
+              </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
       <div
@@ -345,7 +373,7 @@ const PostPublication: NextPageWithLayout = () => {
             Selecciona un máximo de tres fotos para crear una galería
           </span>
         </div>
-        <form className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4">
           <section className="grid grid-cols-3 w-[320px] h-[168px] gap-5 mb-10 border rounded-[11px] border-primary-gray py-[23px] px-[15px] xs:w-[372px] sm:w-[500px] sm:h-60 md:w-[620px] md:h-64 lg:px-[23px] lg:pt-7 lg:pb-[23px]">
             <input
               className="file:hidden file:apperence-none file:invisible file:opacity-0 hidden "
@@ -392,9 +420,9 @@ const PostPublication: NextPageWithLayout = () => {
             state={formPublication}
             action="Publicar"
           />
-        </form>
+        </div>
       </div>
-    </section>
+    </form>
   );
 };
 

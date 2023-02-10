@@ -21,6 +21,8 @@ export default function DetailPage() {
   const allEvents = useAppSelector((state) => state.events);
   const categorysList = usePublicationsTypes();
 
+  console.log(allEvents.events);
+
   const handleClickMenu = () => {
     setShowMenuLabes(!showMenuLabels);
   };

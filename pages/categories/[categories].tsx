@@ -25,7 +25,7 @@ const CategoriPage = () => {
   };
 
   //*Filters
-  let thisCategory: any = categorysList.data?.filter(
+  const thisCategory: any = categorysList.data?.filter(
     (category: categorytype) =>
       category.name.toLocaleLowerCase().replaceAll(' ', '-') == categories
   );
