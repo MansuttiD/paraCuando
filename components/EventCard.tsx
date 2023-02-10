@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { publicationIdVotes } from '../lib/services/publications.services';
@@ -23,6 +24,7 @@ export default function EventCard({
   img,
 }: AppProps) {
   const [likeHeart, setLikeHeart] = useState(false);
+  const router = useRouter();
 
   const handleVote = () => {
     publicationIdVotes(id)
@@ -37,14 +39,7 @@ export default function EventCard({
         });
       })
       .catch((err) => {
-        Swal.fire({
-          position: 'top',
-          toast: true,
-          icon: 'error',
-          title: 'El voto no ha sido registrado',
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        router.push('/login');
       });
   };
 

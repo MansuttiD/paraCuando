@@ -3245,10 +3245,10 @@ synckit@^0.8.4:
     "@pkgr/utils" "^2.3.1"
     tslib "^2.4.0"
 
-tailwindcss-no-scrollbar@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/tailwindcss-no-scrollbar/-/tailwindcss-no-scrollbar-1.0.1.tgz#e904053cd6f7a4c8884dea5b069eea9b8bfe63a6"
-  integrity sha512-6Jy3iFvlQ8hZ3TdM+c96GMk1hrPYZGxvUghIQvEGGzp6u2JP/iZGXMoOL3/R2Sb4VisUku0oz8NZ9MT4LTgu4w==
+tailwind-scrollbar@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tailwind-scrollbar/-/tailwind-scrollbar-2.1.0.tgz#46e0b8788cef75387f9d163a5ec82b8cacd66c44"
+  integrity sha512-zpvY5mDs0130YzYjZKBiDaw32rygxk5RyJ4KmeHjGnwkvbjm/PszON1m4Bbt2DkMRIXlXsfNevykAESgURN4KA==
 
 tailwindcss@^3.2.4:
   version "3.2.4"
