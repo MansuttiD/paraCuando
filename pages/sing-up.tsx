@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import type { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import Swal from 'sweetalert2';
 import { userSignup } from '../lib/services/autenticate.services';
 import type { NextPageWithLayout } from './_app';
 
@@ -23,7 +25,26 @@ const Signup: NextPageWithLayout = () => {
       .then(() => {
         router.push('/login');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Swal.fire({
+          position: 'top',
+          toast: true,
+          icon: 'error',
+          title: 'Ha ocurrido un error, sus datos no han sido enviados',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+  };
+
+  const [passwordSingUp, setPasswordSingUp] = useState('password');
+
+  const handlePasswordSingUp = () => {
+    setPasswordSingUp('password');
+  };
+
+  const handlePasswordText = () => {
+    setPasswordSingUp('text');
   };
 
   return (
@@ -110,13 +131,23 @@ const Signup: NextPageWithLayout = () => {
               >
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                autoComplete="off"
-                className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none"
-                {...register('password', { required: true })}
-              />
+              <div className="h-[56px] border-[1.5px] border-solid border-primary-input rounded-[5px] p-4 outline-none flex justify-between items-center">
+                <input
+                  type={passwordSingUp}
+                  id="password"
+                  autoComplete="off"
+                  className="outline-none w-4/5"
+                  {...register('password', { required: true })}
+                />
+                <AiFillEye
+                  onClick={handlePasswordText}
+                  className={`${passwordSingUp == 'text' ? 'hidden' : ''}`}
+                />
+                <AiFillEyeInvisible
+                  onClick={handlePasswordSingUp}
+                  className={`${passwordSingUp == 'password' ? 'hidden' : ''}`}
+                />
+              </div>
             </div>
 
             <button className="bg-primary-blue rounded-[5px] h-[45.26px] text-white h400-normal-16px font-semibold">

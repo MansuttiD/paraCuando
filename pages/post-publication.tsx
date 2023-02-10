@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 import NextButton from '../components/NextButton';
 import { Publication } from '../lib/interfaces/publication.interface';
 import { usePublicationsTypes } from '../lib/services/category.services';
@@ -37,7 +38,14 @@ const PostPublication: NextPageWithLayout = () => {
         console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire({
+          position: 'top',
+          toast: true,
+          icon: 'error',
+          title: 'Ha ocurrido un error, no se pudo realizar su publicacion',
+          showConfirmButton: false,
+          timer: 2000,
+        });
       });
   };
 

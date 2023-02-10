@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import LabelBox from '../../components/LabelBox';
@@ -29,8 +30,26 @@ export default function DetailPage() {
 
   const handleVote = () => {
     publicationIdVotes(detailPage)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        Swal.fire({
+          position: 'top',
+          toast: true,
+          icon: 'success',
+          title: 'Gracias por tu voto',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: 'top',
+          toast: true,
+          icon: 'error',
+          title: 'El voto no ha sido registrado',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
   };
 
   return (
@@ -83,7 +102,7 @@ export default function DetailPage() {
         {/* Informacion sobre el evento, Descripcion, Artista, Genero, Pagina etc */}
         <div className="flex items-center justify-center w-full m-auto">
           <div className=" flex flex-col  gap-10 p-4 m-auto  items-center lg:grid  lg:grid-cols-5 lg:w-4/5 lg:h-[450px] lg:mb-24 ">
-            <div className="h-full col-start-1 col-end-3 row-start-1 row-end-2 ">
+            <div className="h-full col-start-1 w-full col-end-3 row-start-1 row-end-2 ">
               <span className="h500-normal-16px">Artista / Pop / Rock</span>
               <h2 className="h900-normal-48px lg:w-min-[400px]">
                 {data?.results.title}
@@ -110,7 +129,7 @@ export default function DetailPage() {
                     />
                   </svg>
                   <span className="text-primary-blackLight h500-medium-14px leading-leading-3">
-                    900,800,120 votos
+                    {`${data?.results.votes_count} votos`}
                   </span>
                 </span>
               </div>

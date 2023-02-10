@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 import {
   updateMyUser,
   useMyUser,
@@ -27,10 +28,21 @@ const ConfigurationPage: NextPageWithLayout = () => {
   };
 
   const submit = (obj: any) => {
-    updateMyUser(obj, myId).then((res) => {
-      reset(defaultValue);
-      console.log(res);
-    });
+    updateMyUser(obj, myId)
+      .then((res) => {
+        reset(defaultValue);
+        console.log(res);
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: 'top',
+          toast: true,
+          icon: 'error',
+          title: 'Ups,No se pudo actualizar tus datos',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -41,7 +41,9 @@ const CategoriPage = () => {
     return (
       <div>
         <div
-          style={{ backgroundImage: `url(/${categories}.jpg)` }}
+          style={{
+            backgroundImage: `url(/${categories}.jpg)`,
+          }}
           className={`px-[20px] py-[23px] h-[204px] bg-no-repeat bg-cover bg-center`}
         >
           <div className="max-w-[992px] m-auto ">
