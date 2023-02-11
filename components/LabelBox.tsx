@@ -1,19 +1,8 @@
-import { useEffect, useRef } from 'react';
 import { useAllMyTags } from '../lib/services/tags.services';
 import Label from './Label';
 
 export default function LabelBox() {
   const { data } = useAllMyTags();
-
-  const scrollContainerRef = useRef<any>(null);
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (scrollContainer) {
-      scrollContainer.addEventListener('scroll', (e: any) => {
-        // aquí puedes aplicar un efecto de parallax o cualquier otra lógica
-      });
-    }
-  }, []);
 
   return (
     <div className="bg-primary-grayLighter pt-[25px] px-[60px] max-w-[950px] min-h-[250px] mt-16 flex flex-col gap-6 md:m-auto md:mt-16 pb-10 text-primary-grayDark">
@@ -21,10 +10,7 @@ export default function LabelBox() {
       <h3 className="h400-normal-16px">
         Selecciona tus interes para brindarte sugerencia de acuerdo a tus gustos
       </h3>
-      <div
-        ref={scrollContainerRef}
-        className="flex scroll w-full gap-4 overflow-x-scroll h-[50px] md:overflow-x-auto  scrollbar-thin scrollbar-thumb-primary-gray scrollbar-track-primary-grayLighter "
-      >
+      <div className="flex scroll w-full gap-4 overflow-x-scroll h-[50px] md:overflow-x-auto  scrollbar ">
         {data?.map((tag) => (
           <Label key={tag.id} category={tag.name} />
         ))}

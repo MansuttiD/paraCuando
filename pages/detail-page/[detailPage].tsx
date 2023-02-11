@@ -107,7 +107,7 @@ export default function DetailPage() {
               <h2 className="h900-normal-48px lg:w-min-[400px]">
                 {data?.results.title}
               </h2>
-              <p className="mt-7 mb-7 h400-medium-15px text-primary-grayDark ">
+              <p className="mt-7 mb-7 h400-medium-15px text-primary-grayDark lg:max-h-[200px] lg:overflow-y-scroll lg:scrollbar ">
                 {data?.results.description}
               </p>
               <div>
