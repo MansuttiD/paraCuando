@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import type { ReactElement } from 'react';
-import { useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { ReactElement, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import NextButton from '../components/NextButton';
 import { Publication } from '../lib/interfaces/publication.interface';
@@ -14,26 +13,30 @@ import type { NextPageWithLayout } from './_app';
 const PostPublication: NextPageWithLayout = () => {
   const router = useRouter();
 
-  const defaulValues = {
-    idPublicationType: '',
-    title: '',
-    description: '',
-    urlShare: '',
-    tags: '',
-    exampleRequired: '',
-  };
-
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<Publication>();
+    watch,
+  } = useForm({
+    defaultValues: {
+      idPublicationType: '',
+      title: '',
+      description: '',
+      urlShare: '',
+      tags: '',
+      exampleRequired: '',
+      image1: '',
+      image2: '',
+      image3: '',
+    },
+  });
 
-  const onSubmit: SubmitHandler<Publication> = (data) => {
+  const onSubmit = (data: Publication) => {
     publicationPost(data)
       .then((res) => {
-        reset(defaulValues);
+        reset();
         router.push('/profile');
         console.log(res);
       })
@@ -49,6 +52,9 @@ const PostPublication: NextPageWithLayout = () => {
       });
   };
 
+  const [file1, setFile1] = useState<string>();
+  const [file2, setFile2] = useState<string>();
+  const [file3, setFile3] = useState<string>();
   const [formPublication, setFormPublication] = useState(false);
   const { data: publicationsTypes } = usePublicationsTypes();
   const { data: publicationTags } = useAllMyTags();
@@ -61,6 +67,22 @@ const PostPublication: NextPageWithLayout = () => {
     e.preventDefault();
     setFormPublication(!formPublication);
   };
+
+  const picture1 = watch('image1');
+  const picture2 = watch('image2');
+  const picture3 = watch('image3');
+
+  useEffect(() => {
+    if (picture1) {
+      setFile1(URL.createObjectURL(picture1[0]));
+    }
+    if (picture2) {
+      setFile2(URL.createObjectURL(picture2[0]));
+    }
+    if (picture3) {
+      setFile3(URL.createObjectURL(picture3[0]));
+    }
+  }, [picture1, picture2, picture3]);
 
   return (
     <form
@@ -230,7 +252,7 @@ const PostPublication: NextPageWithLayout = () => {
           </Link>
         </div>
         <div className="text-white flex flex-col justify-around gap-6">
-          <p className="text-[#F3F243]">¡Bienvenido, creador!</p>
+          <p className="text-primary-yellow">¡Bienvenido, creador!</p>
           <p className="lg:mb-[25vh]">
             A continuación puedes completar la info de la marca, artista o
             torneo que quieres cerca.
@@ -386,11 +408,20 @@ const PostPublication: NextPageWithLayout = () => {
             <input
               className="file:hidden file:apperence-none file:invisible file:opacity-0 hidden "
               type="file"
-              name="Image1"
               id="Image1"
               accept="image/*"
+              {...register('image1')}
             />
             <label
+              style={
+                file1
+                  ? {
+                      backgroundImage: `url(${file1})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }
+                  : {}
+              }
               className="h-full w-full bg-primary-grayLight flex items-center justify-center  text-5xl text-primary-blue "
               htmlFor="Image1"
             >
@@ -399,11 +430,20 @@ const PostPublication: NextPageWithLayout = () => {
             <input
               className="file:hidden file:apperence-none file:invisible file:opacity-0 hidden "
               type="file"
-              name="Image2"
               id="Image2"
               accept="image/*"
+              {...register('image2')}
             />
             <label
+              style={
+                file2
+                  ? {
+                      backgroundImage: `url(${file2})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }
+                  : {}
+              }
               className="h-full w-full bg-primary-grayLight flex items-center justify-center text-5xl text-primary-blue "
               htmlFor="Image2"
             >
@@ -412,11 +452,20 @@ const PostPublication: NextPageWithLayout = () => {
             <input
               className="file:hidden file:apperence-none file:invisible file:opacity-0 hidden "
               type="file"
-              name="Image3"
               id="Image3"
               accept="image/*"
+              {...register('image3')}
             />
             <label
+              style={
+                file3
+                  ? {
+                      backgroundImage: `url(${file3})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }
+                  : {}
+              }
               className="h-full w-full bg-primary-grayLight flex items-center justify-center cursor-pointer text-5xl text-primary-blue  "
               htmlFor="Image3"
             >

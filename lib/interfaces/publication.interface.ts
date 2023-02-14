@@ -5,4 +5,7 @@ export interface Publication {
   urlShare: string;
   tags: string;
   exampleRequired: string;
+  image1: string;
+  image2: string;
+  image3: string;
 }

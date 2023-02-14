@@ -101,7 +101,7 @@ export default function DetailPage() {
       <div className="max-w-[1230px] m-auto  ">
         {/* Informacion sobre el evento, Descripcion, Artista, Genero, Pagina etc */}
         <div className="flex items-center justify-center w-full m-auto">
-          <div className=" flex flex-col  gap-10 p-4 m-auto  items-center lg:grid  lg:grid-cols-5 lg:w-4/5 lg:h-[450px] lg:mb-24 ">
+          <div className=" flex flex-col  gap-10 p-4 m-auto  items-center lg:grid  lg:grid-cols-5 lg:w-4/5  ">
             <div className="h-full col-start-1 w-full col-end-3 row-start-1 row-end-2 ">
               <span className="h500-normal-16px">Artista / Pop / Rock</span>
               <h2 className="h900-normal-48px lg:w-min-[400px]">
@@ -146,7 +146,7 @@ export default function DetailPage() {
             </div>
             <button
               onClick={handleVote}
-              className="m-auto mb-9  bg-primary-blue w-full h-[40px] rounded-2xl h500-normal-16px text-white col-start-1 col-end-3 row-start-2 row-end-3"
+              className="m-auto  bg-primary-blue w-full h-[40px] rounded-2xl h500-normal-16px text-white col-start-1 col-end-3 row-start-2 row-end-3"
             >
               Votar
             </button>

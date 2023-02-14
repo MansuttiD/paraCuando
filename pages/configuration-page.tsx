@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import {
@@ -9,28 +9,24 @@ import {
 import { NextPageWithLayout } from './_app';
 
 const ConfigurationPage: NextPageWithLayout = () => {
-  const {
-    handleSubmit,
-    register,
-    reset,
-    formState: { errors },
-  } = useForm<any>();
-
   const { data } = useMyUserInfo();
   const myId = data?.results.id;
   const myUser = useMyUser(myId);
   const [file, setFile] = useState<any>(null);
+  const [imagePreview, setImagePreview] = useState<string>();
 
-  const defaultValue: any = {
-    firstName: myUser.data?.results.first_name,
-    lastName: myUser.data?.results.last_name,
-    image_url: data?.results.profile[0].image_url,
-  };
+  const { handleSubmit, register, reset, watch } = useForm({
+    defaultValues: {
+      firstName: myUser.data?.results.first_name || '',
+      lastName: myUser.data?.results.last_name || '',
+      image_url: data?.results.profile[0].image_url || '',
+    },
+  });
 
   const submit = (obj: any) => {
     updateMyUser(obj, myId)
       .then((res) => {
-        reset(defaultValue);
+        reset();
         console.log(res);
       })
       .catch((err) => {
@@ -44,11 +40,12 @@ const ConfigurationPage: NextPageWithLayout = () => {
         });
       });
   };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFile(e.target.files?.[0]);
-    console.log(e.target.files?.[0]);
-  };
+  const myPicture = watch('image_url');
+  useEffect(() => {
+    if (myPicture) {
+      setImagePreview(URL.createObjectURL(myPicture[0]));
+    }
+  }, [myPicture]);
 
   return (
     <div className="sizeConfig">
@@ -66,9 +63,15 @@ const ConfigurationPage: NextPageWithLayout = () => {
             Agrega una foto para tu perfil
           </span>
           <div
-            style={{
-              backgroundImage: `url(${file ? URL.createObjectURL(file) : ''})`,
-            }}
+            style={
+              imagePreview
+                ? {
+                    backgroundImage: `url(${imagePreview})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }
+                : {}
+            }
             className={`w-[177px] h-[208px] mt-5 ${
               !file ? 'bg-primary-grayLight' : ''
             } flex items-center justify-center  `}
@@ -78,7 +81,6 @@ const ConfigurationPage: NextPageWithLayout = () => {
               type="file"
               id="perfilPicture"
               accept="image/*"
-              onSubmit={handleChange}
               {...register('image_url')}
             />
             <label
