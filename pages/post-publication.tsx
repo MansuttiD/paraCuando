@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReactElement, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import NextButton from '../components/NextButton';
@@ -27,9 +27,9 @@ const PostPublication: NextPageWithLayout = () => {
       urlShare: '',
       tags: '',
       exampleRequired: '',
-      image1: '',
-      image2: '',
-      image3: '',
+      image1: ' ',
+      image2: ' ',
+      image3: ' ',
     },
   });
 
@@ -74,15 +74,21 @@ const PostPublication: NextPageWithLayout = () => {
 
   useEffect(() => {
     if (picture1) {
-      setFile1(URL.createObjectURL(picture1[0]));
+      console.log(picture1[0]);
     }
+  }, [picture1]);
+
+  useEffect(() => {
     if (picture2) {
-      setFile2(URL.createObjectURL(picture2[0]));
+      console.log(picture2[0]);
     }
+  }, [picture2]);
+
+  useEffect(() => {
     if (picture3) {
-      setFile3(URL.createObjectURL(picture3[0]));
+      console.log(picture3[0]);
     }
-  }, [picture1, picture2, picture3]);
+  }, [picture3]);
 
   return (
     <form
@@ -481,10 +487,6 @@ const PostPublication: NextPageWithLayout = () => {
       </div>
     </form>
   );
-};
-
-PostPublication.getLayout = function getLayout(page: ReactElement) {
-  return page;
 };
 
 export default PostPublication;

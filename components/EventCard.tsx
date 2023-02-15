@@ -13,6 +13,7 @@ type AppProps = {
   counter: string;
   content: string;
   img: string;
+  mutate: any;
 };
 
 export default function EventCard({
@@ -22,6 +23,7 @@ export default function EventCard({
   counter,
   content,
   img,
+  mutate,
 }: AppProps) {
   const [likeHeart, setLikeHeart] = useState(false);
   const router = useRouter();
@@ -37,6 +39,7 @@ export default function EventCard({
           showConfirmButton: false,
           timer: 2000,
         });
+        mutate();
       })
       .catch((err) => {
         router.push('/login');

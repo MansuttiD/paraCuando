@@ -12,20 +12,19 @@ import { NextPageWithLayout } from '../_app';
 const Profile: NextPageWithLayout = () => {
   const { data } = usePublication();
   const { data: myData } = useMyUserInfo();
-  const [publications, setPublications] = useState<boolean>(true);
-  const myId = myData?.results.id;
-  const myVotes = useMyVotes(myId);
+  const [publicationsPrev, setPublicationsPrev] = useState<boolean>(true);
+  const myId = myData?.id;
+  const { data: myVotes, mutate } = useMyVotes(myId);
 
-  const myPublications: any[] = data?.results.results.filter(
-    (publication: any) =>
-      publication.profile_id == myData?.results.profile[0].id
+  const myPublications: any[] = data?.filter(
+    (publication: any) => publication.profile_id == myData?.profile[0].id
   );
 
   const handleVotes = () => {
-    setPublications(true);
+    setPublicationsPrev(true);
   };
   const handlePublications = () => {
-    setPublications(false);
+    setPublicationsPrev(false);
   };
 
   return (
@@ -52,11 +51,12 @@ const Profile: NextPageWithLayout = () => {
         </div>
         <div
           className={`flex gap-10 mx-auto mb-14 flex-wrap md:gap-6 justify-center ${
-            publications ? 'hidden' : ''
+            publicationsPrev ? 'hidden' : ''
           }`}
         >
           {myPublications?.map((publication: any) => (
             <EventCard
+              mutate=""
               key={publication.id}
               id={publication.id}
               title={publication.title}
@@ -69,11 +69,12 @@ const Profile: NextPageWithLayout = () => {
         </div>
         <div
           className={`flex gap-10 mx-auto mb-14 flex-wrap md:gap-6 justify-center ${
-            publications ? '' : 'hidden'
+            publicationsPrev ? '' : 'hidden'
           }`}
         >
-          {myVotes.data?.results.results.map((publication: any) => (
+          {myVotes?.results.map((publication: any) => (
             <EventCard
+              mutate={mutate}
               key={publication.Publication.id}
               id={publication.Publication.id}
               title={publication.Publication.title}

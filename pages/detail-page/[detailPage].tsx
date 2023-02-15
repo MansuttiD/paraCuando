@@ -10,26 +10,24 @@ import SliderCard from '../../components/SliderCard';
 import { usePublicationsTypes } from '../../lib/services/category.services';
 import {
   publicationIdVotes,
+  usePublication,
   usePublicationId,
 } from '../../lib/services/publications.services';
-import { useAppSelector } from '../../store/hooks';
 
 export default function DetailPage() {
   const router = useRouter();
-  const { detailPage } = router.query;
+  const id = router.query.detailPage as string;
   const [showMenuLabels, setShowMenuLabes] = useState(false);
-  const { data } = usePublicationId(detailPage);
-  const allEvents = useAppSelector((state) => state.events);
-  const categorysList = usePublicationsTypes();
-
-  console.log(allEvents.events);
+  const { data: publications, mutate: mutPublications } = usePublication();
+  const { data: categories } = usePublicationsTypes();
+  const { data: publication, mutate: mutPublication } = usePublicationId(id);
 
   const handleClickMenu = () => {
     setShowMenuLabes(!showMenuLabels);
   };
 
   const handleVote = () => {
-    publicationIdVotes(detailPage)
+    publicationIdVotes(id)
       .then((res) => {
         Swal.fire({
           position: 'top',
@@ -39,6 +37,9 @@ export default function DetailPage() {
           showConfirmButton: false,
           timer: 2000,
         });
+        setTimeout(function () {
+          mutPublication();
+        }, 300);
       })
       .catch((err) => {
         Swal.fire({
@@ -82,7 +83,7 @@ export default function DetailPage() {
                 : 'hidden'
             } md:flex md:flex-row md:static md:bg-transparent md:p-0 md:gap-4`}
           >
-            {categorysList.data?.map((list) => (
+            {categories?.map((list) => (
               <Link
                 key={list.id}
                 href={`/categories/${list.name
@@ -105,14 +106,14 @@ export default function DetailPage() {
             <div className="h-full col-start-1 w-full col-end-3 row-start-1 row-end-2 ">
               <span className="h500-normal-16px">Artista / Pop / Rock</span>
               <h2 className="h900-normal-48px lg:w-min-[400px]">
-                {data?.results.title}
+                {publication?.title}
               </h2>
               <p className="mt-7 mb-7 h400-medium-15px text-primary-grayDark lg:max-h-[200px] lg:overflow-y-scroll lg:scrollbar ">
-                {data?.results.description}
+                {publication?.description}
               </p>
               <div>
                 <span className=" h500-medium-14px text-primary-blue">
-                  {data?.results.content}
+                  {publication?.content}
                 </span>
                 <span className="flex gap-3 mt-3">
                   <svg
@@ -129,7 +130,7 @@ export default function DetailPage() {
                     />
                   </svg>
                   <span className="text-primary-blackLight h500-medium-14px leading-leading-3">
-                    {`${data?.results.votes_count} votos`}
+                    {`${publication?.votes_count} votos`}
                   </span>
                 </span>
               </div>
@@ -162,7 +163,8 @@ export default function DetailPage() {
         {/* Slider de mas eventos */}
 
         <SliderCard
-          events={allEvents.events}
+          mutate={mutPublications}
+          events={publications}
           title="title_1"
           description="Desription One"
         />

@@ -142,7 +142,7 @@ export default function Header() {
               </svg>
             </div>
             <div className={`${!data ? 'hidden' : ''}`}>
-              {data?.results.email}
+              {data?.email}
             </div>
             <svg
               width="10"

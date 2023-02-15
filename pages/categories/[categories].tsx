@@ -11,7 +11,7 @@ import { usePublication } from '../../lib/services/publications.services';
 const CategoriPage = () => {
   //*Hooks
   const router = useRouter();
-  const { data } = usePublication();
+  const { data: publications, mutate } = usePublication();
   const categorysList = usePublicationsTypes();
 
   //*Router
@@ -30,7 +30,7 @@ const CategoriPage = () => {
       category.name.toLocaleLowerCase().replaceAll(' ', '-') == categories
   );
 
-  const publicationsByType = data?.results.results.filter(
+  const publicationsByType = publications.filter(
     (publication: Events) =>
       publication.publication_type.name
         .toLocaleLowerCase()
@@ -82,17 +82,20 @@ const CategoriPage = () => {
           </div>
           <div>
             <SliderCard
+              mutate={mutate}
               events={publicationsByType}
               title="Populares en Queretaro"
               description="Lo que las personas piden mas"
             />
             <SliderCard
+              mutate={mutate}
               events={publicationsByType}
               title="Sugerencias para ti"
               description="Publicaciones que podrias colaborar"
             />
             <LabelBox />
             <SliderCard
+              mutate={mutate}
               events={publicationsByType}
               title="Recientes"
               description="Las personas ultimamente estan hablando de esto"

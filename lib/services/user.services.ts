@@ -16,7 +16,7 @@ function useMyUserInfo() {
     }
   );
   return {
-    data,
+    data: data?.results,
     error,
     isLoading,
     mutate,
@@ -33,7 +33,7 @@ function useMyUser(id: any) {
     }
   );
   return {
-    data,
+    data: data?.results,
     error,
     isLoading,
     mutate,
@@ -46,7 +46,7 @@ function useMyVotes(id: string | null | undefined) {
     fetcher
   );
   return {
-    data,
+    data: data?.results,
     error,
     isLoading,
     mutate,
@@ -59,7 +59,7 @@ function useMyPublications(id: string) {
     fetcher
   );
   return {
-    data,
+    data: data?.results,
     error,
     isLoading,
     mutate,

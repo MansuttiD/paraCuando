@@ -9,7 +9,7 @@ function usePublication() {
     fetcher
   );
   return {
-    data,
+    data: data?.results.results,
     error,
     isLoading,
     mutate,
@@ -20,13 +20,13 @@ function publicationPost(data: Publication) {
   return instance.post(`/publications`, data);
 }
 
-function usePublicationId(id: string | string[] | undefined) {
+function usePublicationId(id: string) {
   const { data, error, isLoading, mutate } = useSMR(
     `/publications/${id}`,
     fetcher
   );
   return {
-    data,
+    data: data?.results,
     error,
     isLoading,
     mutate,

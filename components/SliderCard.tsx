@@ -9,9 +9,15 @@ interface props {
   title: string;
   description: string;
   events: Events[] | null | undefined | any;
+  mutate: any;
 }
 
-export default function SliderCard({ title, description, events }: props) {
+export default function SliderCard({
+  title,
+  description,
+  events,
+  mutate,
+}: props) {
   return (
     <div className="relative w-[90%] p-2  mx-auto mt-14 sm:w-4/5  ">
       <h2 className="h500-normal-24px">{title}</h2>
@@ -55,6 +61,7 @@ export default function SliderCard({ title, description, events }: props) {
           {events?.map((event: any) => (
             <SwiperSlide key={event.id}>
               <EventCard
+                mutate={mutate}
                 img={event.image_url}
                 title={event.title}
                 description={event.description}
