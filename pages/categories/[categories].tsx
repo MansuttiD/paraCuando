@@ -30,7 +30,7 @@ const CategoriPage = () => {
       category.name.toLocaleLowerCase().replaceAll(' ', '-') == categories
   );
 
-  const publicationsByType = publications.filter(
+  const publicationsByType = publications?.filter(
     (publication: Events) =>
       publication.publication_type.name
         .toLocaleLowerCase()
