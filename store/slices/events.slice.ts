@@ -1,8 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { EventInitial, Events } from '../../lib/interfaces/slices.interfaces';
+import { Events } from '../../lib/interfaces/slices.interfaces';
 
-let initialState: EventInitial = {
+let initialState: any = {
   events: null,
 };
 
