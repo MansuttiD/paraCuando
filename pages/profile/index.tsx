@@ -4,7 +4,6 @@ import EventCard from '../../components/EventCard';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Label from '../../components/Label';
-import NextButton from '../../components/NextButton';
 import { usePublication } from '../../lib/services/publications.services';
 import { useMyUserInfo, useMyVotes } from '../../lib/services/user.services';
 import { NextPageWithLayout } from '../_app';
@@ -86,7 +85,7 @@ const Profile: NextPageWithLayout = () => {
           ))}
         </div>
         <div className="flex items-center justify-center  lg:hidden">
-          <NextButton set="" state={false} action="Ver mas" />
+          {/* <NextButton set="" state={false} action="Ver mas" /> */}
         </div>
       </section>
     </div>
