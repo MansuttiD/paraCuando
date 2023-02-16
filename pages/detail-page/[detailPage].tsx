@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import LabelBox from '../../components/LabelBox';
 import SliderCard from '../../components/SliderCard';
 import { usePublicationsTypes } from '../../lib/services/category.services';
+import { useMyVotes } from '../../lib/services/myVotes.services';
 import {
   publicationIdVotes,
   usePublication,
@@ -17,10 +18,12 @@ import {
 export default function DetailPage() {
   const router = useRouter();
   const id = router.query.detailPage as string;
+  const { data, mutate: mutVotes } = useMyVotes();
   const [showMenuLabels, setShowMenuLabes] = useState(false);
   const { data: publications, mutate: mutPublications } = usePublication();
   const { data: categories } = usePublicationsTypes();
   const { data: publication, mutate: mutPublication } = usePublicationId(id);
+  const [votar, setVotar] = useState('votar');
 
   const handleClickMenu = () => {
     setShowMenuLabes(!showMenuLabels);
@@ -39,6 +42,7 @@ export default function DetailPage() {
         });
         setTimeout(function () {
           mutPublication();
+          mutVotes();
         }, 300);
       })
       .catch((err) => {
@@ -52,6 +56,16 @@ export default function DetailPage() {
         });
       });
   };
+
+  useEffect(() => {
+    if (
+      data?.results.some((publication: any) => publication.Publication.id == id)
+    ) {
+      setVotar('Remover Voto');
+    } else {
+      setVotar('Votar');
+    }
+  }, [data]);
 
   return (
     <div className="m-auto ">
@@ -149,7 +163,7 @@ export default function DetailPage() {
               onClick={handleVote}
               className="m-auto  bg-primary-blue w-full h-[40px] rounded-2xl h500-normal-16px text-white col-start-1 col-end-3 row-start-2 row-end-3"
             >
-              Votar
+              {votar}
             </button>
           </div>
         </div>

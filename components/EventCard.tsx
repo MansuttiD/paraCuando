@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { eventCard } from '../lib/interfaces/eventCard.interface';
+import { useMyVotes } from '../lib/services/myVotes.services';
 import { publicationIdVotes } from '../lib/services/publications.services';
 import HeartDisLike from './HeartDisLike';
 import HeartLike from './HeartLike';
@@ -18,10 +19,13 @@ export default function EventCard({
 }: eventCard) {
   const [likeHeart, setLikeHeart] = useState(false);
   const router = useRouter();
+  const { data, mutate: mutVotes } = useMyVotes();
 
   const handleVote = () => {
     publicationIdVotes(id)
       .then((res) => {
+        mutVotes();
+        mutate();
         Swal.fire({
           position: 'top',
           toast: true,
@@ -30,12 +34,21 @@ export default function EventCard({
           showConfirmButton: false,
           timer: 2000,
         });
-        mutate();
       })
       .catch((err) => {
         router.push('/login');
       });
   };
+
+  useEffect(() => {
+    if (
+      data?.results.some((publication: any) => publication.Publication.id == id)
+    ) {
+      setLikeHeart(true);
+    } else {
+      setLikeHeart(false);
+    }
+  }, [data]);
 
   const [textLegth, setTextLegth] = useState<boolean>(false);
 

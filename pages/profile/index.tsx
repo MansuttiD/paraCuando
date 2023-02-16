@@ -4,16 +4,16 @@ import EventCard from '../../components/EventCard';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Label from '../../components/Label';
+import { useMyVotes } from '../../lib/services/myVotes.services';
 import { usePublication } from '../../lib/services/publications.services';
-import { useMyUserInfo, useMyVotes } from '../../lib/services/user.services';
+import { useMyUserInfo } from '../../lib/services/user.services';
 import { NextPageWithLayout } from '../_app';
 
 const Profile: NextPageWithLayout = () => {
   const { data } = usePublication();
   const { data: myData } = useMyUserInfo();
   const [publicationsPrev, setPublicationsPrev] = useState<boolean>(true);
-  const myId = myData?.id;
-  const { data: myVotes, mutate } = useMyVotes(myId);
+  const { data: myVotes, mutate } = useMyVotes();
 
   const myPublications: any[] = data?.filter(
     (publication: any) => publication.profile_id == myData?.profile[0].id
