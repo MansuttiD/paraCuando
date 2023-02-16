@@ -7,7 +7,6 @@ import Hero from '../components/Hero';
 import InputSearch from '../components/InputSearch';
 import Label from '../components/Label';
 import MinMenu from '../components/MinMenu';
-import NextButton from '../components/NextButton';
 
 export default function components() {
   return (
@@ -37,7 +36,7 @@ export default function components() {
         {/* <li>Layout</li> */}
         {/* <Layout /> */}
         <li>NextButton</li>
-        <NextButton set="" state={false} action="siguiente" />
+        {/* <NextButton set="" state={false} action="siguiente" /> */}
         {/* <li>SlideNexButton</li>
           <SlideNextButton />
           <li>SlidePrevButton</li>
