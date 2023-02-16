@@ -1,25 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
-import {
-  updateMyUser,
-  useMyUser,
-  useMyUserInfo,
-} from '../lib/services/user.services';
+import { useMyUser } from '../lib/services/myUser.services';
+import { updateMyUser, useMyUserInfo } from '../lib/services/user.services';
 import { NextPageWithLayout } from './_app';
 
 const ConfigurationPage: NextPageWithLayout = () => {
   const { data } = useMyUserInfo();
-  const myId = data?.results.id;
-  const myUser = useMyUser(myId);
-  const [file, setFile] = useState<any>(null);
+  const myId = data?.id;
+  const myUser = useMyUser();
+  const [file, setFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>();
 
   const { handleSubmit, register, reset, watch } = useForm({
     defaultValues: {
-      firstName: myUser.data?.results.first_name || '',
-      lastName: myUser.data?.results.last_name || '',
-      image_url: data?.results.profile[0].image_url || '',
+      firstName: myUser.data?.first_name || '',
+      lastName: myUser.data?.last_name || '',
+      image_url: data?.profile[0].image_url || '',
     },
   });
 
@@ -106,7 +103,7 @@ const ConfigurationPage: NextPageWithLayout = () => {
                 className="md:w-[620px] w-[300px] rounded-xl h-12 border-2 border-[#7D7D7D] outline-none p-2"
                 type="text"
                 id="first"
-                value={myUser.data?.results.first_name || ''}
+                value={myUser.data?.first_name || ''}
                 {...register('firstName', { required: true })}
               />
             </div>
@@ -121,7 +118,7 @@ const ConfigurationPage: NextPageWithLayout = () => {
                 className="md:w-[620px] w-[300px] rounded-xl h-12 border-2 border-[#7D7D7D] outline-none p-2"
                 type="text"
                 id="last"
-                value={myUser.data?.results.last_name || ''}
+                value={myUser.data?.last_name || ''}
                 {...register('lastName', { required: true })}
               />
             </div>

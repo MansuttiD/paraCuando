@@ -33,13 +33,16 @@ export interface User {
 export interface Events {
   id: string;
   profile_id: string;
+  publication_type_id: string;
   title: string;
   description: string;
   content: string;
-  picture: null;
-  image_url: null;
-  created_at: string;
-  updated_at: string;
+  picture: string;
+  city_id: string;
+  image_url: string;
+  created_at: Date;
+  updated_at: Date;
+  votes_count: string;
   city: City;
   publication_type: PublicationType;
   tags: Tag[];
@@ -47,13 +50,17 @@ export interface Events {
 
 export interface City {
   id: string;
-  name: string;
+  name: CityName;
   state: State;
+}
+
+export enum CityName {
+  Culiacan = 'Culiacan',
 }
 
 export interface State {
   id: string;
-  name: string;
+  name: StateName;
   Country: Tag;
 }
 
@@ -62,12 +69,24 @@ export interface Tag {
   name: string;
 }
 
+export enum StateName {
+  Sinaloa = 'Sinaloa',
+}
+
 export interface PublicationType {
   id: string;
-  name: string;
+  name: PublicationTypeName;
   description: string;
 }
 
-export interface EventInitial {
-  events: Events[] | null;
+export enum Description {
+  Concert = 'concert',
+  MarcasYTiendas = 'Marcas y tiendas',
+  Torneos = 'Torneos',
+}
+
+export enum PublicationTypeName {
+  ArtistasYConciertos = 'Artistas y conciertos',
+  MarcasYTiendas = 'Marcas y tiendas',
+  Torneos = 'Torneos',
 }

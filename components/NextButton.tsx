@@ -1,6 +1,6 @@
 type AppProps = {
   action: string;
-  set: any;
+  set: (value: boolean) => void;
   state: boolean;
 };
 export default function NextButton({ action, set, state }: AppProps) {

@@ -23,23 +23,6 @@ function useMyUserInfo() {
   };
 }
 
-function useMyUser(id: any) {
-  const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/users/${id}`,
-    fetcher,
-    {
-      revalidateIfStale: false,
-      revalidateOnFocus: false,
-    }
-  );
-  return {
-    data: data?.results,
-    error,
-    isLoading,
-    mutate,
-  };
-}
-
 function useMyVotes(id: string | null | undefined) {
   const { data, error, isLoading, mutate } = useSMR(
     `${BASE_URL}/users/${id}/votes`,
@@ -80,10 +63,4 @@ function updateMyUser(
   return instance.put(`${BASE_URL}/users/${id}`, data);
 }
 
-export {
-  useMyUserInfo,
-  useMyVotes,
-  useMyPublications,
-  updateMyUser,
-  useMyUser,
-};
+export { useMyUserInfo, useMyVotes, useMyPublications, updateMyUser };

@@ -5,22 +5,16 @@ import { ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import Swal from 'sweetalert2';
+import { singUp } from '../lib/interfaces/singUp.interface';
 import { userSignup } from '../lib/services/autenticate.services';
 import type { NextPageWithLayout } from './_app';
 
-type Inputs = {
-  password: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-};
-
 const Signup: NextPageWithLayout = () => {
-  const { handleSubmit, register } = useForm<Inputs>();
+  const { handleSubmit, register } = useForm<singUp>();
 
   const router = useRouter();
 
-  const submit = (data: Inputs) => {
+  const submit = (data: singUp) => {
     userSignup(data)
       .then(() => {
         router.push('/login');

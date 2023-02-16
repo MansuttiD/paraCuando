@@ -12,6 +12,10 @@ export default function Header() {
     setMenuActive(!menuActive);
   };
 
+  const handleMenuOff = () => {
+    setMenuActive(false);
+  };
+
   return (
     <>
       <header className="bg-primary-black text-[11px] text-white h-[71px] flex pl-6 py-5 justify-between">
@@ -141,9 +145,7 @@ export default function Header() {
                 />
               </svg>
             </div>
-            <div className={`${!data ? 'hidden' : ''}`}>
-              {data?.email}
-            </div>
+            <div className={`${!data ? 'hidden' : ''}`}>{data?.email}</div>
             <svg
               width="10"
               height="6"
@@ -161,7 +163,13 @@ export default function Header() {
         </ul>
       </header>
       <div
-        className={`absolute z-[5000] right-6 transition-transform ${
+        onClick={handleMenuOff}
+        className={`absolute h-screen w-[99%] m-auto z-[4100] ${
+          menuActive ? '' : 'hidden'
+        }`}
+      ></div>
+      <div
+        className={`absolute right-6 transition-transform z-[5000] ${
           menuActive ? '' : '-translate-y-96'
         }`}
       >

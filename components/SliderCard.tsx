@@ -8,7 +8,7 @@ import EventCard from './EventCard';
 interface props {
   title: string;
   description: string;
-  events: Events[] | null | undefined | any;
+  events?: Events[];
   mutate: any;
 }
 

@@ -2,19 +2,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import { eventCard } from '../lib/interfaces/eventCard.interface';
 import { publicationIdVotes } from '../lib/services/publications.services';
 import HeartDisLike from './HeartDisLike';
 import HeartLike from './HeartLike';
-
-type AppProps = {
-  title: string;
-  description: string;
-  id: string | null;
-  counter: string;
-  content: string;
-  img: string;
-  mutate: any;
-};
 
 export default function EventCard({
   title,
@@ -24,7 +15,7 @@ export default function EventCard({
   content,
   img,
   mutate,
-}: AppProps) {
+}: eventCard) {
   const [likeHeart, setLikeHeart] = useState(false);
   const router = useRouter();
 
