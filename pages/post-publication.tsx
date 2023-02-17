@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import NextButton from '../components/NextButton';
 import { Publication } from '../lib/interfaces/publication.interface';
@@ -480,6 +480,10 @@ const PostPublication: NextPageWithLayout = () => {
       </div>
     </form>
   );
+};
+
+PostPublication.getLayout = function getLayout(page: ReactElement) {
+  return page;
 };
 
 export default PostPublication;
