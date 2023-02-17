@@ -8,7 +8,7 @@ const BASE_URL = publicRuntimeConfig.BASE_URL;
 
 function useMyUserInfo() {
   const { data, error, isLoading, mutate } = useSMR(
-    `${BASE_URL}/users/user-info`,
+    `/users/user-info`,
     fetcher,
     {
       revalidateIfStale: false,

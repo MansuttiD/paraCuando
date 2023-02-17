@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
 import { eventCard } from '../lib/interfaces/eventCard.interface';
 import { useMyVotes } from '../lib/services/myVotes.services';
 import { publicationIdVotes } from '../lib/services/publications.services';
+import { swalerror, swalsucces } from '../lib/swalmods/sRespons';
 import HeartDisLike from './HeartDisLike';
 import HeartLike from './HeartLike';
 
@@ -26,17 +26,18 @@ export default function EventCard({
       .then((res) => {
         mutVotes();
         mutate();
-        Swal.fire({
-          position: 'top',
-          toast: true,
-          icon: 'success',
-          title: 'Gracias por tu voto',
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        if (res.status == 201) {
+          swalsucces('Gracias por tu voto');
+        } else {
+          swalsucces('Voto Removido');
+        }
       })
       .catch((err) => {
-        router.push('/login');
+        if (err.response.data == 'Unauthorized') {
+          router.push('/login');
+        } else {
+          swalerror('El voto no ha sido registrado');
+        }
       });
   };
 

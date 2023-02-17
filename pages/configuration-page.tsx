@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
 import { useMyUser } from '../lib/services/myUser.services';
 import { updateMyUser, useMyUserInfo } from '../lib/services/user.services';
+import { swalerror } from '../lib/swalmods/sRespons';
 import { NextPageWithLayout } from './_app';
 
 const ConfigurationPage: NextPageWithLayout = () => {
@@ -27,14 +27,7 @@ const ConfigurationPage: NextPageWithLayout = () => {
         console.log(res);
       })
       .catch((err) => {
-        Swal.fire({
-          position: 'top',
-          toast: true,
-          icon: 'error',
-          title: 'Ups,No se pudo actualizar tus datos',
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        swalerror('Ups,No se pudo actualizar tus datos');
       });
   };
   const myPicture = watch('image_url');

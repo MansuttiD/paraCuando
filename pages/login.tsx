@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import Swal from 'sweetalert2';
 import { login } from '../lib/services/autenticate.services';
+import { swalerror } from '../lib/swalmods/sRespons';
 import type { NextPageWithLayout } from './_app';
 
 type Inputs = {
@@ -24,14 +24,15 @@ const Login: NextPageWithLayout = () => {
         window.location.href = '/profile';
       })
       .catch((err) => {
-        Swal.fire({
-          position: 'top',
-          toast: true,
-          icon: 'error',
-          title: 'Ha ocurrido un error, sus datos no han sido validados',
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        console.log(err.response.data.errorName);
+        if (err.response.data.errorName == 'Password is incorrect') {
+          swalerror('Contraseña Incorrecta');
+        }
+        if (err.response.data.errorName == 'Not Found') {
+          swalerror('Email no encontrado');
+        } else {
+          swalerror('No fue posible Iniciar Sesion');
+        }
       });
   };
 

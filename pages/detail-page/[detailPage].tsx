@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
 import InputSearch from '../../components/InputSearch';
 import Label from '../../components/Label';
 import LabelBox from '../../components/LabelBox';
@@ -14,6 +13,7 @@ import {
   usePublication,
   usePublicationId,
 } from '../../lib/services/publications.services';
+import { swalerror, swalsucces } from '../../lib/swalmods/sRespons';
 
 export default function DetailPage() {
   const router = useRouter();
@@ -32,28 +32,22 @@ export default function DetailPage() {
   const handleVote = () => {
     publicationIdVotes(id)
       .then((res) => {
-        Swal.fire({
-          position: 'top',
-          toast: true,
-          icon: 'success',
-          title: 'Gracias por tu voto',
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        if (res.status == 201) {
+          swalsucces('Gracias por tu voto');
+        } else {
+          swalsucces('Voto Removido');
+        }
         setTimeout(function () {
           mutPublication();
           mutVotes();
         }, 300);
       })
       .catch((err) => {
-        Swal.fire({
-          position: 'top',
-          toast: true,
-          icon: 'error',
-          title: 'El voto no ha sido registrado',
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        if (err.response.data == 'Unauthorized') {
+          router.push('/login');
+        } else {
+          swalerror('El voto no ha sido registrado');
+        }
       });
   };
 
@@ -65,7 +59,7 @@ export default function DetailPage() {
     } else {
       setVotar('Votar');
     }
-  }, [data]);
+  }, [data?.results]);
 
   return (
     <div className="m-auto ">

@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import { ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import Swal from 'sweetalert2';
 import { singUp } from '../lib/interfaces/singUp.interface';
 import { userSignup } from '../lib/services/autenticate.services';
+import { swalerror } from '../lib/swalmods/sRespons';
 import type { NextPageWithLayout } from './_app';
 
 const Signup: NextPageWithLayout = () => {
@@ -20,14 +20,11 @@ const Signup: NextPageWithLayout = () => {
         router.push('/login');
       })
       .catch((err) => {
-        Swal.fire({
-          position: 'top',
-          toast: true,
-          icon: 'error',
-          title: 'Ha ocurrido un error, sus datos no han sido enviados',
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        if (err.response.status == 409) {
+          swalerror('Este email ya fue registrado anteriormente');
+        } else {
+          swalerror('No se pudo registrar tu registro');
+        }
       });
   };
 
