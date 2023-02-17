@@ -41,10 +41,16 @@ const Profile: NextPageWithLayout = () => {
           </div>
           <div className="flex gap-5">
             <div className="cursor-pointer" onClick={handleVotes}>
-              <Label category="Mis votos " />
+              <Label
+                category="Mis votos "
+                classChange={publicationsPrev ? true : false}
+              />
             </div>
             <div className="cursor-pointer" onClick={handlePublications}>
-              <Label category="Mis Publicaciones" />
+              <Label
+                classChange={!publicationsPrev ? true : false}
+                category="Mis Publicaciones"
+              />
             </div>
           </div>
         </div>
